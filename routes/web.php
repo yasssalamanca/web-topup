@@ -16,3 +16,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('home');
 });
+
+Route::get('/order/{game}', [\App\Http\Controllers\OrderController::class, 'show'])->name('order.show');
