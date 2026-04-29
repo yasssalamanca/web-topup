@@ -6,75 +6,41 @@
     <title>YASS Game Store - Premium Gaming Store</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Space+Grotesk:wght@600&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet"/>
     <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
             theme: {
                 extend: {
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                        space: ['Space Grotesk', 'sans-serif'],
+                    },
                     colors: {
-                        "on-secondary-container": "#fefcff",
-                        "error-container": "#93000a",
-                        "primary-fixed-dim": "#b1c8e8",
-                        "tertiary-fixed-dim": "#e9c400",
-                        "on-surface": "#dae2fd",
-                        "surface-container-highest": "#2d3449",
-                        "on-primary": "#1a324b",
-                        "secondary-container": "#0174d9",
-                        "on-surface-variant": "#c4c6ce",
-                        "surface-container-lowest": "#060e20",
-                        "secondary-fixed": "#d5e3ff",
-                        "on-primary-fixed": "#011d35",
-                        "on-tertiary-fixed": "#221b00",
-                        "on-tertiary-container": "#4c3f00",
-                        secondary: "#a7c8ff",
-                        "on-primary-fixed-variant": "#314862",
-                        "surface-bright": "#31394d",
-                        "on-tertiary-fixed-variant": "#544600",
-                        "primary-fixed": "#d1e4ff",
-                        "outline-variant": "#43474d",
-                        "on-secondary-fixed-variant": "#004788",
-                        primary: "#b1c8e8",
-                        "on-secondary-fixed": "#001b3b",
-                        "primary-container": "#001b33",
-                        "on-error-container": "#ffdad6",
-                        outline: "#8d9198",
-                        "surface-dim": "#0b1326",
-                        error: "#ffb4ab",
-                        "secondary-fixed-dim": "#a7c8ff",
-                        tertiary: "#e9c400",
-                        "inverse-surface": "#dae2fd",
-                        "on-error": "#690005",
-                        "surface-variant": "#2d3449",
-                        "on-secondary": "#003060",
-                        "tertiary-fixed": "#ffe16d",
-                        "inverse-primary": "#49607b",
-                        "surface-container-low": "#131b2e",
-                        "surface-container-high": "#222a3d",
-                        "tertiary-container": "#c9a900",
-                        "inverse-on-surface": "#283044",
-                        "on-background": "#dae2fd",
-                        "on-tertiary": "#3a3000",
-                        background: "#0b1326",
-                        "on-primary-container": "#6d84a1",
-                        "surface-container": "#171f33",
-                        "surface-tint": "#b1c8e8",
-                        surface: "#0b1326"
+                        background: "#060e20",
+                        surface: "#0b1326",
+                        "surface-light": "#171f33",
+                        primary: "#0074D9",
+                        "primary-glow": "rgba(0,116,217,0.5)",
                     }
                 }
             }
         };
     </script>
     <style>
+        body { font-family: 'Inter', sans-serif; }
+        .font-display { font-family: 'Space Grotesk', sans-serif; }
+        
         .glass-panel {
             background: rgba(255, 255, 255, 0.03);
             backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.08);
         }
         .glass-panel:hover {
-            border-color: #0174d9;
-            box-shadow: 0 0 20px rgba(1, 116, 217, 0.2);
+            border-color: rgba(0, 116, 217, 0.5);
+            box-shadow: 0 0 25px rgba(0, 116, 217, 0.15);
         }
+        
         .hide-scrollbar::-webkit-scrollbar {
             display: none;
         }
@@ -82,244 +48,495 @@
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
+
+        .slide-item {
+            min-width: 100%;
+            transition: opacity 0.5s ease-in-out;
+        }
+        
+        .text-glow {
+            text-shadow: 0 0 20px rgba(255,255,255,0.3);
+        }
     </style>
 </head>
-<body class="bg-background text-on-background antialiased min-h-screen flex flex-col pt-[72px]">
+<body class="bg-background text-slate-100 antialiased min-h-screen flex flex-col pt-[72px] selection:bg-primary selection:text-white">
 
 <!-- TopNavBar Component -->
-<header class="fixed top-0 w-full z-50 bg-[#001B33]/80 backdrop-blur-md border-b border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.1)]">
-    <div class="flex items-center justify-between px-6 py-4 max-w-[1280px] mx-auto">
-        <div class="flex items-center gap-8">
-            <a class="text-2xl font-black italic tracking-tighter text-blue-500" href="#">YASS Game Store</a>
-            <nav class="hidden md:flex items-center gap-6">
-                <a class="font-inter text-sm font-medium tracking-wide text-blue-500 border-b-2 border-blue-500 pb-1 hover:text-blue-400 transition-colors duration-200 active:scale-95 transition-transform" href="#">Topup</a>
-                <a class="font-inter text-sm font-medium tracking-wide text-slate-300 hover:text-blue-400 transition-colors duration-200 active:scale-95 transition-transform" href="#">Cek Transaksi</a>
-                <a class="font-inter text-sm font-medium tracking-wide text-slate-300 hover:text-blue-400 transition-colors duration-200 active:scale-95 transition-transform" href="#">Leaderboard</a>
-                <a class="font-inter text-sm font-medium tracking-wide text-slate-300 hover:text-blue-400 transition-colors duration-200 active:scale-95 transition-transform" href="#">Kalkulator</a>
+<header class="fixed top-0 w-full z-50 bg-[#060e20]/80 backdrop-blur-lg border-b border-white/5 shadow-xl transition-all duration-300">
+    <div class="flex items-center justify-between px-4 md:px-6 py-3 md:py-4 max-w-[1280px] mx-auto">
+        <div class="flex items-center gap-6 lg:gap-10">
+            <a class="text-xl md:text-2xl font-black italic tracking-tighter text-blue-500 hover:text-blue-400 transition-colors flex items-center gap-2" href="#">
+                <span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">sports_esports</span>
+                YASS
+            </a>
+            
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex items-center gap-8">
+                <a class="text-sm font-semibold tracking-wide text-blue-500 border-b-2 border-blue-500 pb-1" href="#">Topup</a>
+                <a class="text-sm font-semibold tracking-wide text-slate-400 hover:text-slate-200 transition-colors" href="#">Cek Transaksi</a>
+                <a class="text-sm font-semibold tracking-wide text-slate-400 hover:text-slate-200 transition-colors" href="#">Leaderboard</a>
+                <a class="text-sm font-semibold tracking-wide text-slate-400 hover:text-slate-200 transition-colors" href="#">Kalkulator</a>
             </nav>
         </div>
-        <div class="flex items-center gap-4">
-            <div class="hidden lg:flex items-center bg-surface-container-highest rounded-full px-4 py-2 border border-white/10">
-                <span class="material-symbols-outlined text-on-surface-variant mr-2" style="font-variation-settings: 'FILL' 0;">search</span>
-                <input class="bg-transparent border-none text-sm text-on-surface placeholder-on-surface-variant focus:ring-0 focus:outline-none w-48" placeholder="Search games..." type="text"/>
-            </div>
-            <button aria-label="Language" class="text-slate-300 hover:text-blue-400 transition-colors duration-200">
-                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">language</span>
+        
+        <div class="flex items-center gap-3 md:gap-5">
+            <!-- Search Icon (Mobile) / Bar (Desktop) -->
+            <button class="md:hidden text-slate-300 hover:text-white p-2">
+                <span class="material-symbols-outlined text-2xl">search</span>
             </button>
-            <button aria-label="Payments" class="text-slate-300 hover:text-blue-400 transition-colors duration-200">
-                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">payments</span>
-            </button>
-            <div class="flex items-center gap-3 ml-2">
-                <button class="text-blue-500 hover:text-blue-400 transition-colors duration-200 px-4 py-2 rounded-lg border border-white/10 bg-white/5 backdrop-blur-sm font-semibold">Login</button>
-                <button class="text-white bg-gradient-to-b from-[#0084FF] to-[#0074D9] hover:from-[#0074D9] hover:to-[#005bb5] transition-all duration-200 px-4 py-2 rounded-lg shadow-lg font-semibold">Register</button>
+            <div class="hidden md:flex items-center bg-surface rounded-full px-4 py-2 border border-white/10 focus-within:border-primary/50 focus-within:ring-1 focus-within:ring-primary/50 transition-all">
+                <span class="material-symbols-outlined text-slate-400 mr-2 text-lg">search</span>
+                <input class="bg-transparent border-none text-sm text-slate-200 placeholder-slate-500 focus:ring-0 focus:outline-none w-32 lg:w-48" placeholder="Cari game..." type="text"/>
             </div>
+
+            <!-- Login / Reg -->
+            <div class="hidden sm:flex items-center gap-3 border-l border-white/10 pl-5">
+                <button class="text-sm font-semibold text-slate-300 hover:text-white transition-colors">Masuk</button>
+                <button class="text-sm font-semibold text-white bg-gradient-to-r from-blue-600 to-primary hover:from-blue-500 hover:to-blue-400 px-5 py-2 rounded-full shadow-[0_0_15px_rgba(0,116,217,0.3)] transition-all transform hover:scale-105 active:scale-95">Daftar</button>
+            </div>
+
+            <!-- Hamburger Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-slate-300 hover:text-white p-2 ml-1">
+                <span class="material-symbols-outlined text-3xl">menu</span>
+            </button>
         </div>
     </div>
 </header>
 
-<main class="flex-grow flex flex-col gap-12 pb-12">
+<!-- Mobile Menu Overlay -->
+<div id="mobile-menu" class="fixed inset-y-0 right-0 z-[60] w-full sm:w-80 bg-[#060e20] border-l border-white/10 shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out md:hidden flex flex-col">
+    <div class="flex items-center justify-between p-5 border-b border-white/10">
+        <a class="text-xl font-black italic tracking-tighter text-blue-500 flex items-center gap-2" href="#">
+            <span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">sports_esports</span>
+            YASS
+        </a>
+        <button id="close-menu-btn" class="text-slate-400 hover:text-white p-1 rounded-full bg-white/5">
+            <span class="material-symbols-outlined">close</span>
+        </button>
+    </div>
+    
+    <div class="flex-grow overflow-y-auto py-6 px-5 flex flex-col gap-2">
+        <a class="text-lg font-semibold text-blue-400 bg-blue-500/10 px-4 py-3 rounded-xl flex items-center gap-3" href="#">
+            <span class="material-symbols-outlined">bolt</span> Topup
+        </a>
+        <a class="text-lg font-semibold text-slate-300 hover:text-white hover:bg-white/5 px-4 py-3 rounded-xl transition-colors flex items-center gap-3" href="#">
+            <span class="material-symbols-outlined">receipt_long</span> Cek Transaksi
+        </a>
+        <a class="text-lg font-semibold text-slate-300 hover:text-white hover:bg-white/5 px-4 py-3 rounded-xl transition-colors flex items-center gap-3" href="#">
+            <span class="material-symbols-outlined">leaderboard</span> Leaderboard
+        </a>
+        <a class="text-lg font-semibold text-slate-300 hover:text-white hover:bg-white/5 px-4 py-3 rounded-xl transition-colors flex items-center gap-3" href="#">
+            <span class="material-symbols-outlined">calculate</span> Kalkulator
+        </a>
+    </div>
+
+    <div class="p-5 border-t border-white/10 flex flex-col gap-3">
+        <button class="w-full text-base font-semibold text-slate-200 bg-white/5 hover:bg-white/10 px-5 py-3 rounded-xl transition-colors border border-white/10">Masuk</button>
+        <button class="w-full text-base font-semibold text-white bg-gradient-to-r from-blue-600 to-primary hover:opacity-90 px-5 py-3 rounded-xl shadow-[0_0_20px_rgba(0,116,217,0.3)] transition-all">Daftar Akun Baru</button>
+    </div>
+</div>
+
+<main class="flex-grow flex flex-col gap-10 md:gap-14 pb-16">
     <!-- Hero Slider Section -->
-    <section class="max-w-[1280px] mx-auto w-full px-6 mt-6">
-        <div class="relative w-full h-[400px] rounded-xl overflow-hidden shadow-2xl group">
-            <div class="absolute inset-0 bg-gradient-to-r from-surface-container-lowest to-transparent z-10 opacity-60"></div>
-            <img alt="Promo April Banner" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDyNP6R0L9O_CYnnWSNFJoSd2376SIWPO3-iB1QuVZn4jE1I4rj9wjR5cAQvLvRKBqC67QAAJZneqWB3tBBT48qL4odW8pKk9fWurtVuqg7ONmMK5vZVNLj1Ra6LWZPl3o_yHir4X1FdGEdKGS-qzsk3fczeDjEb9kwZzhN6h-MTjhRjBJcAsQ4NJYSiLdT_PWgGvIPZwVVA7pX4TzDLyUUzDq_nY169_1rciUq2frvGi22KL8KO9mJl0Dt9quXL6kdyWs6mhYQOzMZ"/>
-            <div class="absolute inset-y-0 left-0 z-20 flex flex-col justify-center px-12 max-w-lg">
-                <span class="text-xs font-bold text-tertiary-fixed mb-4 inline-block px-3 py-1 bg-tertiary-container/20 rounded-full border border-tertiary/30 backdrop-blur-md uppercase tracking-wider">PROMO APRIL TAHUN INI</span>
-                <h1 class="text-5xl font-extrabold text-on-secondary-container mb-4 leading-tight">YASS Game Store <br/><span class="text-transparent bg-clip-text bg-gradient-to-r from-secondary-fixed to-primary-fixed">Super Sale</span></h1>
-                <p class="text-lg text-on-surface-variant mb-8">Dapatkan diskon hingga 50% untuk semua topup game favoritmu bulan ini. Stock terbatas!</p>
-                <button class="w-fit font-semibold text-on-secondary-container bg-gradient-to-b from-[#0084FF] to-[#0074D9] px-8 py-3 rounded-lg shadow-[0_0_20px_rgba(0,116,217,0.4)] hover:scale-105 transition-transform">Topup Sekarang</button>
+    <section class="max-w-[1280px] mx-auto w-full px-4 md:px-6 pt-4 md:pt-6">
+        <div class="relative w-full h-[220px] sm:h-[300px] md:h-[450px] rounded-2xl overflow-hidden shadow-2xl group border border-white/5">
+            
+            <div id="slider-container" class="flex transition-transform duration-700 ease-in-out h-full w-full">
+                <!-- Slide 1 -->
+                <div class="slide-item relative h-full flex-shrink-0">
+                    <div class="absolute inset-0 bg-gradient-to-r from-[#060e20] via-[#060e20]/60 to-transparent z-10"></div>
+                    <img alt="Promo Mobile Legends" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDyNP6R0L9O_CYnnWSNFJoSd2376SIWPO3-iB1QuVZn4jE1I4rj9wjR5cAQvLvRKBqC67QAAJZneqWB3tBBT48qL4odW8pKk9fWurtVuqg7ONmMK5vZVNLj1Ra6LWZPl3o_yHir4X1FdGEdKGS-qzsk3fczeDjEb9kwZzhN6h-MTjhRjBJcAsQ4NJYSiLdT_PWgGvIPZwVVA7pX4TzDLyUUzDq_nY169_1rciUq2frvGi22KL8KO9mJl0Dt9quXL6kdyWs6mhYQOzMZ"/>
+                    <div class="absolute inset-y-0 left-0 z-20 flex flex-col justify-center px-6 md:px-14 max-w-xl">
+                        <span class="text-[10px] md:text-xs font-bold text-yellow-400 mb-2 md:mb-4 inline-block w-max px-3 py-1 bg-yellow-500/20 rounded-full border border-yellow-500/30 backdrop-blur-md uppercase tracking-wider">SUPER PROMO</span>
+                        <h1 class="font-display text-2xl sm:text-4xl md:text-6xl font-extrabold text-white mb-2 md:mb-4 leading-[1.1] text-glow">YASS Super <br/><span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">Mega Sale</span></h1>
+                        <p class="text-xs sm:text-sm md:text-lg text-slate-300 mb-4 md:mb-8 max-w-sm md:max-w-md line-clamp-2 md:line-clamp-none">Dapatkan diskon hingga 50% untuk semua topup game favoritmu minggu ini. Stock sangat terbatas!</p>
+                        <button class="w-fit text-xs md:text-base font-semibold text-white bg-gradient-to-r from-blue-600 to-cyan-500 px-6 md:px-8 py-2.5 md:py-3.5 rounded-full shadow-[0_0_20px_rgba(6,182,212,0.4)] hover:scale-105 transition-transform flex items-center gap-2">
+                            Topup Sekarang <span class="material-symbols-outlined text-sm md:text-base">arrow_forward</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Slide 2 -->
+                <div class="slide-item relative h-full flex-shrink-0">
+                    <div class="absolute inset-0 bg-gradient-to-r from-[#060e20] via-[#060e20]/60 to-transparent z-10"></div>
+                    <img alt="Promo HSR" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCw5NAGubfnatfwiY04GuFeKnoy0NC_jo30SP6lpIQRaxqMb5wV-FuO-Zqw4wzknLiEXYt0Ah4AvkolhcSk_rsICUiURWHT6rI1BoZLKfngfurUVlt0Imz8wKHiEoDq7eV94AZMCBJArAXnTAAnItRm5nrtzgO15CBqYB1P5q5BORow6z1O6s2DdGGGHbr4o5GUbnxI-1nx9IDVOSPljFoyKSXTjsfSV1foh6us126FHOXVdq55cVM8mUWNEHxBU-iuXoy0x82KIvSU"/>
+                    <div class="absolute inset-y-0 left-0 z-20 flex flex-col justify-center px-6 md:px-14 max-w-xl">
+                        <span class="text-[10px] md:text-xs font-bold text-purple-400 mb-2 md:mb-4 inline-block w-max px-3 py-1 bg-purple-500/20 rounded-full border border-purple-500/30 backdrop-blur-md uppercase tracking-wider">NEW BANNER</span>
+                        <h1 class="font-display text-2xl sm:text-4xl md:text-6xl font-extrabold text-white mb-2 md:mb-4 leading-[1.1] text-glow">Honkai: <br/><span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">Star Rail</span></h1>
+                        <p class="text-xs sm:text-sm md:text-lg text-slate-300 mb-4 md:mb-8 max-w-sm md:max-w-md line-clamp-2 md:line-clamp-none">Top up Oneiric Shard sekarang dan dapatkan bonus Double Reward khusus user baru!</p>
+                        <button class="w-fit text-xs md:text-base font-semibold text-white bg-gradient-to-r from-purple-500 to-pink-500 px-6 md:px-8 py-2.5 md:py-3.5 rounded-full shadow-[0_0_20px_rgba(168,85,247,0.4)] hover:scale-105 transition-transform flex items-center gap-2">
+                            Topup HSR <span class="material-symbols-outlined text-sm md:text-base">arrow_forward</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Slide 3 -->
+                <div class="slide-item relative h-full flex-shrink-0">
+                    <div class="absolute inset-0 bg-gradient-to-r from-[#060e20] via-[#060e20]/60 to-transparent z-10"></div>
+                    <img alt="Promo Valorant" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIGVgjwovKaY3W3Xwsg8yBeRXV53_zfcXIyXonIqD2qZTy0AM-TmmoX-a0rG5u8qKyU0wUORyT8tnOAyXvAQOKpty-UIh49RtN551TjLT_V25p2Me6dKAwXaHg-xpz1f-8veZv7BbOPeSkEZXVlZHKxSQv21qqZ96EU9tFh8uuHXBvrmLQw--n9kRto_jzeh-VQK1-pllyLKrAMKRED9GR-BMwl8plAr0mBT3rZcNnDgDJ95YMuSx1bjYNBqcdf_MO2SmjLGqsRTq4"/>
+                    <div class="absolute inset-y-0 left-0 z-20 flex flex-col justify-center px-6 md:px-14 max-w-xl">
+                        <span class="text-[10px] md:text-xs font-bold text-orange-400 mb-2 md:mb-4 inline-block w-max px-3 py-1 bg-orange-500/20 rounded-full border border-orange-500/30 backdrop-blur-md uppercase tracking-wider">FLASH DEALS</span>
+                        <h1 class="font-display text-2xl sm:text-4xl md:text-6xl font-extrabold text-white mb-2 md:mb-4 leading-[1.1] text-glow">Mobile Legends <br/><span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-500">Diamond Pass</span></h1>
+                        <p class="text-xs sm:text-sm md:text-lg text-slate-300 mb-4 md:mb-8 max-w-sm md:max-w-md line-clamp-2 md:line-clamp-none">Harga super miring untuk Weekly Diamond Pass! Klaim sekarang sebelum kehabisan.</p>
+                        <button class="w-fit text-xs md:text-base font-semibold text-white bg-gradient-to-r from-orange-500 to-red-600 px-6 md:px-8 py-2.5 md:py-3.5 rounded-full shadow-[0_0_20px_rgba(249,115,22,0.4)] hover:scale-105 transition-transform flex items-center gap-2">
+                            Beli Sekarang <span class="material-symbols-outlined text-sm md:text-base">arrow_forward</span>
+                        </button>
+                    </div>
+                </div>
             </div>
+
             <!-- Slider Controls -->
-            <button class="absolute left-4 top-1/2 -translate-y-1/2 z-30 w-10 h-10 rounded-full bg-black/50 backdrop-blur-md flex items-center justify-center border border-white/10 text-white opacity-0 group-hover:opacity-100 transition-opacity hover:bg-primary-container">
-                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">chevron_left</span>
+            <button id="prev-slide" aria-label="Previous Slide" class="absolute left-2 md:left-6 top-1/2 -translate-y-1/2 z-30 w-8 h-8 md:w-12 md:h-12 rounded-full bg-black/40 backdrop-blur-sm flex items-center justify-center border border-white/20 text-white opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-blue-600 hover:scale-110">
+                <span class="material-symbols-outlined text-base md:text-xl">chevron_left</span>
             </button>
-            <button class="absolute right-4 top-1/2 -translate-y-1/2 z-30 w-10 h-10 rounded-full bg-black/50 backdrop-blur-md flex items-center justify-center border border-white/10 text-white opacity-0 group-hover:opacity-100 transition-opacity hover:bg-primary-container">
-                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">chevron_right</span>
+            <button id="next-slide" aria-label="Next Slide" class="absolute right-2 md:right-6 top-1/2 -translate-y-1/2 z-30 w-8 h-8 md:w-12 md:h-12 rounded-full bg-black/40 backdrop-blur-sm flex items-center justify-center border border-white/20 text-white opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-blue-600 hover:scale-110">
+                <span class="material-symbols-outlined text-base md:text-xl">chevron_right</span>
             </button>
+
             <!-- Slider Indicators -->
-            <div class="absolute bottom-6 left-1/2 -translate-x-1/2 z-30 flex gap-2">
-                <div class="w-8 h-1.5 rounded-full bg-secondary-container"></div>
-                <div class="w-2 h-1.5 rounded-full bg-white/30 hover:bg-white/50 cursor-pointer transition-colors"></div>
-                <div class="w-2 h-1.5 rounded-full bg-white/30 hover:bg-white/50 cursor-pointer transition-colors"></div>
+            <div class="absolute bottom-3 md:bottom-6 left-1/2 -translate-x-1/2 z-30 flex gap-2 md:gap-3 bg-black/30 backdrop-blur-md px-3 md:px-4 py-2 rounded-full border border-white/10">
+                <button class="indicator active w-6 md:w-8 h-1.5 md:h-2 rounded-full bg-blue-500 shadow-[0_0_10px_rgba(59,130,246,0.8)] transition-all duration-300" data-index="0" aria-label="Slide 1"></button>
+                <button class="indicator w-1.5 md:w-2 h-1.5 md:h-2 rounded-full bg-white/40 hover:bg-white transition-all duration-300" data-index="1" aria-label="Slide 2"></button>
+                <button class="indicator w-1.5 md:w-2 h-1.5 md:h-2 rounded-full bg-white/40 hover:bg-white transition-all duration-300" data-index="2" aria-label="Slide 3"></button>
             </div>
         </div>
     </section>
 
     <!-- Category Navigation -->
-    <section class="max-w-[1280px] mx-auto w-full px-6">
-        <div class="flex gap-4 overflow-x-auto pb-4 hide-scrollbar">
-            <button class="flex-shrink-0 flex items-center gap-2 px-6 py-3 rounded-full bg-secondary-container text-on-secondary-container font-semibold shadow-[0_0_15px_rgba(1,116,217,0.3)]">
-                <span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">sports_esports</span>
-                Top Up Games
+    <section class="max-w-[1280px] mx-auto w-full px-4 md:px-6">
+        <div class="flex gap-3 md:gap-4 overflow-x-auto pb-4 hide-scrollbar -mx-4 px-4 md:mx-0 md:px-0">
+            <button class="flex-shrink-0 flex items-center gap-2 px-5 md:px-6 py-2.5 md:py-3.5 rounded-2xl bg-gradient-to-r from-blue-600 to-blue-500 text-white font-semibold shadow-[0_4px_15px_rgba(0,116,217,0.3)] border border-blue-400/30 transform hover:-translate-y-1 transition-all">
+                <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">sports_esports</span>
+                Games
             </button>
-            <button class="flex-shrink-0 flex items-center gap-2 px-6 py-3 rounded-full glass-panel text-on-surface font-semibold hover:text-secondary-fixed transition-colors">
-                <span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 0;">military_tech</span>
+            <button class="flex-shrink-0 flex items-center gap-2 px-5 md:px-6 py-2.5 md:py-3.5 rounded-2xl glass-panel text-slate-300 font-semibold hover:text-white hover:bg-white/5 transform hover:-translate-y-1 transition-all">
+                <span class="material-symbols-outlined text-[20px]">military_tech</span>
                 Joki MLBB
             </button>
-            <button class="flex-shrink-0 flex items-center gap-2 px-6 py-3 rounded-full glass-panel text-on-surface font-semibold hover:text-secondary-fixed transition-colors">
-                <span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 0;">confirmation_number</span>
+            <button class="flex-shrink-0 flex items-center gap-2 px-5 md:px-6 py-2.5 md:py-3.5 rounded-2xl glass-panel text-slate-300 font-semibold hover:text-white hover:bg-white/5 transform hover:-translate-y-1 transition-all">
+                <span class="material-symbols-outlined text-[20px]">confirmation_number</span>
                 Voucher
             </button>
-            <button class="flex-shrink-0 flex items-center gap-2 px-6 py-3 rounded-full glass-panel text-on-surface font-semibold hover:text-secondary-fixed transition-colors">
-                <span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 0;">phone_iphone</span>
+            <button class="flex-shrink-0 flex items-center gap-2 px-5 md:px-6 py-2.5 md:py-3.5 rounded-2xl glass-panel text-slate-300 font-semibold hover:text-white hover:bg-white/5 transform hover:-translate-y-1 transition-all">
+                <span class="material-symbols-outlined text-[20px]">phone_iphone</span>
                 Pulsa & Data
             </button>
-            <button class="flex-shrink-0 flex items-center gap-2 px-6 py-3 rounded-full glass-panel text-on-surface font-semibold hover:text-secondary-fixed transition-colors">
-                <span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 0;">movie</span>
+            <button class="flex-shrink-0 flex items-center gap-2 px-5 md:px-6 py-2.5 md:py-3.5 rounded-2xl glass-panel text-slate-300 font-semibold hover:text-white hover:bg-white/5 transform hover:-translate-y-1 transition-all">
+                <span class="material-symbols-outlined text-[20px]">movie</span>
                 Entertainment
             </button>
         </div>
     </section>
 
     <!-- Popular Games Section -->
-    <section class="max-w-[1280px] mx-auto w-full px-6">
-        <div class="flex items-center gap-3 mb-6">
-            <span class="material-symbols-outlined text-tertiary text-3xl" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
-            <h2 class="text-3xl font-bold text-on-secondary-container">POPULER SEKARANG!</h2>
+    <section class="max-w-[1280px] mx-auto w-full px-4 md:px-6">
+        <div class="flex items-center justify-between mb-6 md:mb-8">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-orange-500/20 flex items-center justify-center border border-orange-500/30">
+                    <span class="material-symbols-outlined text-orange-400 text-2xl" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+                </div>
+                <h2 class="font-display text-xl md:text-3xl font-bold text-white tracking-tight">Sedang Tren</h2>
+            </div>
+            <a href="#" class="text-sm font-semibold text-blue-400 hover:text-blue-300 flex items-center gap-1">Lihat Semua <span class="material-symbols-outlined text-[16px]">arrow_forward</span></a>
         </div>
-        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+        
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 md:gap-6">
             <!-- Game Card 1 -->
-            <a class="glass-panel rounded-xl p-4 flex flex-col items-center text-center gap-3 relative overflow-hidden group transition-all duration-300" href="#">
-                <div class="absolute top-0 right-0 bg-tertiary-fixed text-on-tertiary-fixed text-[10px] px-2 py-0.5 rounded-bl-lg font-bold z-10 uppercase tracking-wide">HOT</div>
-                <div class="absolute inset-0 bg-gradient-to-b from-transparent to-surface-container-lowest/80 z-0"></div>
-                <img alt="Mobile Legends Icon" class="w-20 h-20 rounded-2xl object-cover shadow-lg border border-white/20 z-10 group-hover:scale-110 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIGVgjwovKaY3W3Xwsg8yBeRXV53_zfcXIyXonIqD2qZTy0AM-TmmoX-a0rG5u8qKyU0wUORyT8tnOAyXvAQOKpty-UIh49RtN551TjLT_V25p2Me6dKAwXaHg-xpz1f-8veZv7BbOPeSkEZXVlZHKxSQv21qqZ96EU9tFh8uuHXBvrmLQw--n9kRto_jzeh-VQK1-pllyLKrAMKRED9GR-BMwl8plAr0mBT3rZcNnDgDJ95YMuSx1bjYNBqcdf_MO2SmjLGqsRTq4"/>
-                <div class="z-10 mt-2">
-                    <h3 class="text-base font-bold text-on-surface mb-1 group-hover:text-secondary-fixed transition-colors">Mobile Legends</h3>
-                    <p class="text-xs text-on-surface-variant">Moonton</p>
+            <a class="glass-panel rounded-2xl p-4 md:p-5 flex flex-col items-center text-center gap-3 md:gap-4 relative overflow-hidden group transition-all duration-300 hover:-translate-y-2" href="#">
+                <div class="absolute top-0 right-0 bg-gradient-to-bl from-orange-500 to-red-500 text-white text-[9px] md:text-[10px] px-3 py-1 rounded-bl-xl font-bold z-10 uppercase tracking-wider shadow-lg">HOT</div>
+                <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/80 z-0"></div>
+                <div class="relative w-20 h-20 md:w-24 md:h-24 rounded-2xl overflow-hidden shadow-2xl border border-white/10 group-hover:border-blue-400/50 transition-colors z-10">
+                    <img alt="Mobile Legends" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIGVgjwovKaY3W3Xwsg8yBeRXV53_zfcXIyXonIqD2qZTy0AM-TmmoX-a0rG5u8qKyU0wUORyT8tnOAyXvAQOKpty-UIh49RtN551TjLT_V25p2Me6dKAwXaHg-xpz1f-8veZv7BbOPeSkEZXVlZHKxSQv21qqZ96EU9tFh8uuHXBvrmLQw--n9kRto_jzeh-VQK1-pllyLKrAMKRED9GR-BMwl8plAr0mBT3rZcNnDgDJ95YMuSx1bjYNBqcdf_MO2SmjLGqsRTq4"/>
+                </div>
+                <div class="z-10 mt-1">
+                    <h3 class="text-sm md:text-base font-bold text-white mb-1 group-hover:text-blue-400 transition-colors line-clamp-1">Mobile Legends</h3>
+                    <p class="text-[10px] md:text-xs font-medium text-slate-400">Moonton</p>
                 </div>
             </a>
+            
             <!-- Game Card 2 -->
-            <a class="glass-panel rounded-xl p-4 flex flex-col items-center text-center gap-3 relative overflow-hidden group transition-all duration-300" href="#">
-                <div class="absolute inset-0 bg-gradient-to-b from-transparent to-surface-container-lowest/80 z-0"></div>
-                <img alt="Free Fire Icon" class="w-20 h-20 rounded-2xl object-cover shadow-lg border border-white/20 z-10 group-hover:scale-110 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtwor8T_m6nzVNzSu2DlXAVxiRhUkxHZytqb8WGn37YkyHCTGlnrOhNVX4v-w9s7jMTN9RhuPTchO0ttoVmyVF1KFiqDOk4hzTGnl1P6vTOAkLUTk4EjThU8Uayzxx9HyMTp5GLkFKpRaJxujGHOU2aK-Sa6doreM8ez8gNHjX_2T4POXuvtQnG8cKNnCrWJM9Uj8bN_yOiKaAdiGMUA0cYeO02_QsRsKyXcm5Kxw6e0xGZv731OWFU3kYhiMgQc5J5DEkTJfUabIa"/>
-                <div class="z-10 mt-2">
-                    <h3 class="text-base font-bold text-on-surface mb-1 group-hover:text-secondary-fixed transition-colors">Free Fire</h3>
-                    <p class="text-xs text-on-surface-variant">Garena</p>
+            <a class="glass-panel rounded-2xl p-4 md:p-5 flex flex-col items-center text-center gap-3 md:gap-4 relative overflow-hidden group transition-all duration-300 hover:-translate-y-2" href="#">
+                <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/80 z-0"></div>
+                <div class="relative w-20 h-20 md:w-24 md:h-24 rounded-2xl overflow-hidden shadow-2xl border border-white/10 group-hover:border-blue-400/50 transition-colors z-10">
+                    <img alt="Free Fire" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtwor8T_m6nzVNzSu2DlXAVxiRhUkxHZytqb8WGn37YkyHCTGlnrOhNVX4v-w9s7jMTN9RhuPTchO0ttoVmyVF1KFiqDOk4hzTGnl1P6vTOAkLUTk4EjThU8Uayzxx9HyMTp5GLkFKpRaJxujGHOU2aK-Sa6doreM8ez8gNHjX_2T4POXuvtQnG8cKNnCrWJM9Uj8bN_yOiKaAdiGMUA0cYeO02_QsRsKyXcm5Kxw6e0xGZv731OWFU3kYhiMgQc5J5DEkTJfUabIa"/>
+                </div>
+                <div class="z-10 mt-1">
+                    <h3 class="text-sm md:text-base font-bold text-white mb-1 group-hover:text-blue-400 transition-colors line-clamp-1">Free Fire</h3>
+                    <p class="text-[10px] md:text-xs font-medium text-slate-400">Garena</p>
                 </div>
             </a>
+            
             <!-- Game Card 3 -->
-            <a class="glass-panel rounded-xl p-4 flex flex-col items-center text-center gap-3 relative overflow-hidden group transition-all duration-300" href="#">
-                <div class="absolute top-0 right-0 bg-gradient-to-r from-red-500 to-orange-500 text-white text-[10px] px-2 py-0.5 rounded-bl-lg font-bold z-10 uppercase tracking-wide">SALE</div>
-                <div class="absolute inset-0 bg-gradient-to-b from-transparent to-surface-container-lowest/80 z-0"></div>
-                <img alt="PUBG Mobile Icon" class="w-20 h-20 rounded-2xl object-cover shadow-lg border border-white/20 z-10 group-hover:scale-110 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9_rXqvV-Sa7PRcoKqaICV86ISTkKfNu1EhS3c7uH-FiReNGrsXDl_R2yRRw3heor4ZbEcULbcVd4aElXGIOtsPglwR_lTiFTYXsI_zCovt2aw9eEP_V-yR1FzNbtIy3BJqrwAEoIz-v_rbSHLYFAu7nwSHR_v--bMvKib0mzXQAS1AmfFSwyVg_RB4ksGv996IVh5fscTzfTkNLM6Hws8e5N7xcZ8vr1g-K_6aXUgjXFLxetxXvpWJ4SDrf9EYJft11DGw0B6xxCz"/>
-                <div class="z-10 mt-2">
-                    <h3 class="text-base font-bold text-on-surface mb-1 group-hover:text-secondary-fixed transition-colors">PUBG Mobile</h3>
-                    <p class="text-xs text-on-surface-variant">Level Infinite</p>
+            <a class="glass-panel rounded-2xl p-4 md:p-5 flex flex-col items-center text-center gap-3 md:gap-4 relative overflow-hidden group transition-all duration-300 hover:-translate-y-2" href="#">
+                <div class="absolute top-0 right-0 bg-gradient-to-bl from-blue-500 to-cyan-500 text-white text-[9px] md:text-[10px] px-3 py-1 rounded-bl-xl font-bold z-10 uppercase tracking-wider shadow-lg">SALE</div>
+                <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/80 z-0"></div>
+                <div class="relative w-20 h-20 md:w-24 md:h-24 rounded-2xl overflow-hidden shadow-2xl border border-white/10 group-hover:border-blue-400/50 transition-colors z-10">
+                    <img alt="PUBG Mobile" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9_rXqvV-Sa7PRcoKqaICV86ISTkKfNu1EhS3c7uH-FiReNGrsXDl_R2yRRw3heor4ZbEcULbcVd4aElXGIOtsPglwR_lTiFTYXsI_zCovt2aw9eEP_V-yR1FzNbtIy3BJqrwAEoIz-v_rbSHLYFAu7nwSHR_v--bMvKib0mzXQAS1AmfFSwyVg_RB4ksGv996IVh5fscTzfTkNLM6Hws8e5N7xcZ8vr1g-K_6aXUgjXFLxetxXvpWJ4SDrf9EYJft11DGw0B6xxCz"/>
+                </div>
+                <div class="z-10 mt-1">
+                    <h3 class="text-sm md:text-base font-bold text-white mb-1 group-hover:text-blue-400 transition-colors line-clamp-1">PUBG Mobile</h3>
+                    <p class="text-[10px] md:text-xs font-medium text-slate-400">Level Infinite</p>
                 </div>
             </a>
+
             <!-- Game Card 4 -->
-            <a class="glass-panel rounded-xl p-4 flex flex-col items-center text-center gap-3 relative overflow-hidden group transition-all duration-300" href="#">
-                <div class="absolute inset-0 bg-gradient-to-b from-transparent to-surface-container-lowest/80 z-0"></div>
-                <img alt="Valorant Icon" class="w-20 h-20 rounded-2xl object-cover shadow-lg border border-white/20 z-10 group-hover:scale-110 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVtO1HDjpk2Q_OoL5L-OrFFgfobZ7J8TZcozEIn-If3imkTzJxJo5t6ji8rjmL4i2CB8vL5b1aEHb1eLW-tuCAUyP1JVQ-VRH0CE5RV9ZX0njcn_xtHHTsMoQUTuDWD6-2fsL4dOzSkiDSDkNYGqO6NkUt2Xtf2OQrt_85_4r8cckGJefKZ9cklgYR2RdAEBBXPCxweRxZnJw9IcOUvpuFGuLvzVaAG-b56FDYcdr34IW2MdHO9v0JmG7nDT2gMPT_ln0QVFIL_XGR"/>
-                <div class="z-10 mt-2">
-                    <h3 class="text-base font-bold text-on-surface mb-1 group-hover:text-secondary-fixed transition-colors">Valorant</h3>
-                    <p class="text-xs text-on-surface-variant">Riot Games</p>
+            <a class="glass-panel rounded-2xl p-4 md:p-5 flex flex-col items-center text-center gap-3 md:gap-4 relative overflow-hidden group transition-all duration-300 hover:-translate-y-2" href="#">
+                <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/80 z-0"></div>
+                <div class="relative w-20 h-20 md:w-24 md:h-24 rounded-2xl overflow-hidden shadow-2xl border border-white/10 group-hover:border-blue-400/50 transition-colors z-10">
+                    <img alt="Valorant" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVtO1HDjpk2Q_OoL5L-OrFFgfobZ7J8TZcozEIn-If3imkTzJxJo5t6ji8rjmL4i2CB8vL5b1aEHb1eLW-tuCAUyP1JVQ-VRH0CE5RV9ZX0njcn_xtHHTsMoQUTuDWD6-2fsL4dOzSkiDSDkNYGqO6NkUt2Xtf2OQrt_85_4r8cckGJefKZ9cklgYR2RdAEBBXPCxweRxZnJw9IcOUvpuFGuLvzVaAG-b56FDYcdr34IW2MdHO9v0JmG7nDT2gMPT_ln0QVFIL_XGR"/>
+                </div>
+                <div class="z-10 mt-1">
+                    <h3 class="text-sm md:text-base font-bold text-white mb-1 group-hover:text-blue-400 transition-colors line-clamp-1">Valorant</h3>
+                    <p class="text-[10px] md:text-xs font-medium text-slate-400">Riot Games</p>
                 </div>
             </a>
+
             <!-- Game Card 5 -->
-            <a class="glass-panel rounded-xl p-4 flex flex-col items-center text-center gap-3 relative overflow-hidden group transition-all duration-300 border-[#c9a900]/30 shadow-[0_0_15px_rgba(201,169,0,0.1)]" href="#">
-                <div class="absolute inset-0 bg-gradient-to-b from-transparent to-surface-container-lowest/80 z-0"></div>
-                <img alt="Genshin Impact Icon" class="w-20 h-20 rounded-2xl object-cover shadow-lg border border-[#c9a900]/50 z-10 group-hover:scale-110 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC10ziIAZYqtomlpKtdQNkbxw_pATG8oyYH9DiEONqm7CRLBCnQVOzXNCrIU8AJ7LZ28WGSIJedBUpfB1ltfrM2J7YZcN2JkEAk6Xk-uag3ilC8gwTHtUtUbGQrOLoQCyHh2FPWEQLugvN_cndYy6KIkKBndV-iokvquU36K33_wKU6brDibMUl4xF46yzOFFl7QiTj5ghC7PNMyhxvr4PyWvkdv4cZYt8ToQo3lBDUmONgLeK_MHM_CKmO7pzCTgNqJ7e4EP0p7Z7f"/>
-                <div class="z-10 mt-2">
-                    <h3 class="text-base font-bold text-tertiary-fixed-dim mb-1 group-hover:text-tertiary-fixed transition-colors">Genshin Impact</h3>
-                    <p class="text-xs text-on-surface-variant">HoYoverse</p>
+            <a class="glass-panel rounded-2xl p-4 md:p-5 flex flex-col items-center text-center gap-3 md:gap-4 relative overflow-hidden group transition-all duration-300 hover:-translate-y-2 border-yellow-500/20 hover:border-yellow-400/50 shadow-[0_0_20px_rgba(234,179,8,0.05)]" href="#">
+                <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/80 z-0"></div>
+                <div class="relative w-20 h-20 md:w-24 md:h-24 rounded-2xl overflow-hidden shadow-2xl border border-yellow-500/40 group-hover:border-yellow-400 transition-colors z-10">
+                    <img alt="Genshin Impact" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC10ziIAZYqtomlpKtdQNkbxw_pATG8oyYH9DiEONqm7CRLBCnQVOzXNCrIU8AJ7LZ28WGSIJedBUpfB1ltfrM2J7YZcN2JkEAk6Xk-uag3ilC8gwTHtUtUbGQrOLoQCyHh2FPWEQLugvN_cndYy6KIkKBndV-iokvquU36K33_wKU6brDibMUl4xF46yzOFFl7QiTj5ghC7PNMyhxvr4PyWvkdv4cZYt8ToQo3lBDUmONgLeK_MHM_CKmO7pzCTgNqJ7e4EP0p7Z7f"/>
+                </div>
+                <div class="z-10 mt-1">
+                    <h3 class="text-sm md:text-base font-bold text-yellow-300 mb-1 group-hover:text-yellow-200 transition-colors line-clamp-1">Genshin Impact</h3>
+                    <p class="text-[10px] md:text-xs font-medium text-slate-400">HoYoverse</p>
                 </div>
             </a>
+
             <!-- Game Card 6 -->
-            <a class="glass-panel rounded-xl p-4 flex flex-col items-center text-center gap-3 relative overflow-hidden group transition-all duration-300" href="#">
-                <div class="absolute inset-0 bg-gradient-to-b from-transparent to-surface-container-lowest/80 z-0"></div>
-                <img alt="Honkai Star Rail Icon" class="w-20 h-20 rounded-2xl object-cover shadow-lg border border-white/20 z-10 group-hover:scale-110 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCw5NAGubfnatfwiY04GuFeKnoy0NC_jo30SP6lpIQRaxqMb5wV-FuO-Zqw4wzknLiEXYt0Ah4AvkolhcSk_rsICUiURWHT6rI1BoZLKfngfurUVlt0Imz8wKHiEoDq7eV94AZMCBJArAXnTAAnItRm5nrtzgO15CBqYB1P5q5BORow6z1O6s2DdGGGHbr4o5GUbnxI-1nx9IDVOSPljFoyKSXTjsfSV1foh6us126FHOXVdq55cVM8mUWNEHxBU-iuXoy0x82KIvSU"/>
-                <div class="z-10 mt-2">
-                    <h3 class="text-base font-bold text-on-surface mb-1 group-hover:text-secondary-fixed transition-colors">Honkai: Star Rail</h3>
-                    <p class="text-xs text-on-surface-variant">HoYoverse</p>
+            <a class="glass-panel rounded-2xl p-4 md:p-5 flex flex-col items-center text-center gap-3 md:gap-4 relative overflow-hidden group transition-all duration-300 hover:-translate-y-2" href="#">
+                <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/80 z-0"></div>
+                <div class="relative w-20 h-20 md:w-24 md:h-24 rounded-2xl overflow-hidden shadow-2xl border border-white/10 group-hover:border-blue-400/50 transition-colors z-10">
+                    <img alt="Honkai Star Rail" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCw5NAGubfnatfwiY04GuFeKnoy0NC_jo30SP6lpIQRaxqMb5wV-FuO-Zqw4wzknLiEXYt0Ah4AvkolhcSk_rsICUiURWHT6rI1BoZLKfngfurUVlt0Imz8wKHiEoDq7eV94AZMCBJArAXnTAAnItRm5nrtzgO15CBqYB1P5q5BORow6z1O6s2DdGGGHbr4o5GUbnxI-1nx9IDVOSPljFoyKSXTjsfSV1foh6us126FHOXVdq55cVM8mUWNEHxBU-iuXoy0x82KIvSU"/>
+                </div>
+                <div class="z-10 mt-1">
+                    <h3 class="text-sm md:text-base font-bold text-white mb-1 group-hover:text-blue-400 transition-colors line-clamp-1">Honkai: Star Rail</h3>
+                    <p class="text-[10px] md:text-xs font-medium text-slate-400">HoYoverse</p>
                 </div>
             </a>
         </div>
     </section>
 
     <!-- Promo Section Bento Grid -->
-    <section class="max-w-[1280px] mx-auto w-full px-6 mt-8">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="md:col-span-2 glass-panel rounded-2xl p-8 relative overflow-hidden min-h-[300px] flex flex-col justify-end">
-                <div class="absolute inset-0 z-0">
-                    <img alt="Special Event" class="w-full h-full object-cover opacity-40" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA60iqEhP3guVgy0qC2UtlQEi-aV3DLOTM20S3NXYrTVkySXNBIYbp6BRsALmBu3x90c7m7e_z0vRF9sGj_gDHBNKy4txqIcpjYRalvYJD2WTpwKxXTHUot3hGtjg78R9MbgXa36W4e_qA0g6zVVtWhh6tORwkUfn6brJlRfPLniwC2Za4sv9q6fyFPHmv78TFQERNjgXbFN1Vbz5QG1RgCweAQv4ji-iStlCjh3y82Pl41CSbbV_7haEHBjul_784x0c6PAlIPZuQd"/>
-                    <div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-surface-container-lowest/80 to-transparent"></div>
+    <section class="max-w-[1280px] mx-auto w-full px-4 md:px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-6">
+            <!-- Large Bento Box -->
+            <div class="lg:col-span-2 glass-panel rounded-3xl p-6 md:p-10 relative overflow-hidden min-h-[250px] md:min-h-[350px] flex flex-col justify-end group">
+                <div class="absolute inset-0 z-0 bg-[#0a1930]">
+                    <img alt="Special Event" class="w-full h-full object-cover opacity-30 group-hover:scale-105 group-hover:opacity-40 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA60iqEhP3guVgy0qC2UtlQEi-aV3DLOTM20S3NXYrTVkySXNBIYbp6BRsALmBu3x90c7m7e_z0vRF9sGj_gDHBNKy4txqIcpjYRalvYJD2WTpwKxXTHUot3hGtjg78R9MbgXa36W4e_qA0g6zVVtWhh6tORwkUfn6brJlRfPLniwC2Za4sv9q6fyFPHmv78TFQERNjgXbFN1Vbz5QG1RgCweAQv4ji-iStlCjh3y82Pl41CSbbV_7haEHBjul_784x0c6PAlIPZuQd"/>
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#060e20] via-[#060e20]/80 to-transparent"></div>
                 </div>
-                <div class="relative z-10">
-                    <span class="inline-block px-3 py-1 bg-primary-container rounded-md border border-primary/20 text-primary text-xs font-bold mb-3 uppercase tracking-wider">WEEKEND DEAL</span>
-                    <h3 class="text-3xl font-bold text-on-secondary-container mb-2">Bonus Diamond 20%</h3>
-                    <p class="text-base text-on-surface-variant mb-4 max-w-md">Topup minimal 500 Diamonds dan dapatkan bonus 20% langsung ke akun kamu. Berlaku khusus akhir pekan.</p>
-                    <button class="font-semibold text-white bg-transparent border border-white/30 hover:border-white hover:bg-white/10 px-6 py-2 rounded-lg transition-all">Lihat Detail</button>
+                <div class="relative z-10 w-full md:max-w-xl">
+                    <span class="inline-block px-3 py-1 bg-blue-500/20 rounded-md border border-blue-400/30 text-blue-400 text-[10px] md:text-xs font-bold mb-3 md:mb-4 uppercase tracking-widest backdrop-blur-md">WEEKEND DEAL</span>
+                    <h3 class="font-display text-2xl md:text-4xl font-bold text-white mb-2 md:mb-3">Bonus Diamond 20%</h3>
+                    <p class="text-sm md:text-base text-slate-300 mb-4 md:mb-6">Topup minimal 500 Diamonds dan dapatkan bonus 20% langsung ke akun kamu. Event terbatas untuk merayakan Season baru!</p>
+                    <button class="w-fit font-semibold text-white bg-white/10 hover:bg-white hover:text-black border border-white/20 px-6 py-2.5 md:py-3 rounded-xl transition-all duration-300 backdrop-blur-sm">Lihat Detail Promo</button>
                 </div>
             </div>
-            <div class="glass-panel rounded-2xl p-6 relative overflow-hidden min-h-[300px] flex flex-col justify-between group border-[#c9a900]/20 hover:border-[#c9a900]/50">
+            
+            <!-- Small Bento Box -->
+            <div class="glass-panel rounded-3xl p-6 md:p-8 relative overflow-hidden min-h-[250px] md:min-h-[350px] flex flex-col justify-between group border-amber-500/20 hover:border-amber-400/50 bg-gradient-to-b from-[#0a1526] to-[#121008]">
                 <div class="relative z-10 flex justify-between items-start">
-                    <span class="material-symbols-outlined text-tertiary-fixed text-4xl" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
-                    <span class="text-xs font-bold text-tertiary-fixed bg-tertiary-container/30 px-2 py-1 rounded uppercase tracking-wider">VIP MEMBER</span>
+                    <div class="w-12 h-12 rounded-full bg-amber-500/20 flex items-center justify-center border border-amber-500/30 backdrop-blur-sm">
+                        <span class="material-symbols-outlined text-amber-400 text-2xl" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+                    </div>
+                    <span class="text-[10px] md:text-xs font-bold text-amber-400 bg-amber-500/10 border border-amber-500/20 px-3 py-1 rounded-full uppercase tracking-wider backdrop-blur-md">VIP MEMBER</span>
                 </div>
-                <div class="relative z-10 mt-auto">
-                    <h3 class="text-2xl font-bold text-tertiary-fixed mb-2">YASS Prestige</h3>
-                    <p class="text-sm text-on-surface-variant mb-4">Daftar jadi VIP dan nikmati harga khusus reseller setiap harinya tanpa syarat.</p>
-                    <button class="w-full font-semibold text-[#001B33] bg-gradient-to-r from-tertiary-fixed to-tertiary px-4 py-2 rounded-lg shadow-[0_0_15px_rgba(233,196,0,0.3)]">Daftar Sekarang</button>
+                <div class="relative z-10 mt-8 md:mt-auto">
+                    <h3 class="font-display text-xl md:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-200 to-yellow-500 mb-2 md:mb-3">YASS Prestige</h3>
+                    <p class="text-sm text-slate-300 mb-6">Daftar jadi VIP dan nikmati harga khusus reseller (diskon hingga 15%) setiap harinya tanpa syarat.</p>
+                    <button class="w-full font-bold text-black bg-gradient-to-r from-amber-400 to-yellow-500 hover:from-amber-300 hover:to-yellow-400 px-4 py-3 md:py-3.5 rounded-xl shadow-[0_0_20px_rgba(245,158,11,0.3)] hover:scale-[1.02] transition-all">Daftar Sekarang</button>
                 </div>
-                <div class="absolute -bottom-10 -right-10 w-40 h-40 bg-tertiary-fixed/10 rounded-full blur-3xl group-hover:bg-tertiary-fixed/20 transition-all duration-500"></div>
+                <div class="absolute -bottom-16 -right-16 w-48 h-48 bg-amber-500/10 rounded-full blur-3xl group-hover:bg-amber-500/20 transition-all duration-700"></div>
             </div>
         </div>
     </section>
 </main>
 
 <!-- Footer Component -->
-<footer class="bg-[#001B33] w-full pt-12 pb-8 border-t border-white/5">
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 max-w-[1280px] mx-auto px-6">
-        <div class="col-span-1 md:col-span-1">
-            <h3 class="text-xl font-bold text-blue-500 mb-4">YASS Game Store</h3>
-            <p class="text-sm text-slate-400 mb-6 leading-relaxed">YASS Game Store adalah platform topup game termurah, tercepat, dan terpercaya di Indonesia. Kami menyediakan berbagai macam produk digital dengan sistem otomatis 24/7.</p>
-        </div>
-        <div>
-            <h4 class="font-bold text-on-surface mb-4">Peta Situs</h4>
-            <ul class="space-y-3">
-                <li><a class="text-sm text-blue-500 font-semibold opacity-80 hover:opacity-100 hover:text-amber-400 transition-all" href="#">Beranda</a></li>
-                <li><a class="text-sm text-slate-400 opacity-80 hover:opacity-100 hover:text-amber-400 transition-all" href="#">Hubungi Kami</a></li>
-                <li><a class="text-sm text-slate-400 opacity-80 hover:opacity-100 hover:text-amber-400 transition-all" href="#">Terms of Service</a></li>
-                <li><a class="text-sm text-slate-400 opacity-80 hover:opacity-100 hover:text-amber-400 transition-all" href="#">Privacy Policy</a></li>
-            </ul>
-        </div>
-        <div>
-            <h4 class="font-bold text-on-surface mb-4">Sosial Media</h4>
-            <ul class="space-y-3">
-                <li><a class="flex items-center gap-2 text-sm text-slate-400 opacity-80 hover:opacity-100 hover:text-amber-400 transition-all" href="#">
-                    <span class="material-symbols-outlined text-[18px]">chat</span>WhatsApp
-                </a></li>
-                <li><a class="flex items-center gap-2 text-sm text-slate-400 opacity-80 hover:opacity-100 hover:text-amber-400 transition-all" href="#">
-                    <span class="material-symbols-outlined text-[18px]">photo_camera</span>Instagram
-                </a></li>
-            </ul>
-        </div>
-        <div>
-            <h4 class="font-bold text-on-surface mb-4">Metode Pembayaran</h4>
-            <div class="flex flex-wrap gap-2">
-                <div class="w-12 h-8 bg-white/10 rounded flex items-center justify-center border border-white/5">
-                    <span class="text-[10px] font-bold text-white/50">Qris</span>
-                </div>
-                <div class="w-12 h-8 bg-white/10 rounded flex items-center justify-center border border-white/5">
-                    <span class="text-[10px] font-bold text-white/50">Ovo</span>
-                </div>
-                <div class="w-12 h-8 bg-white/10 rounded flex items-center justify-center border border-white/5">
-                    <span class="text-[10px] font-bold text-white/50">Dana</span>
-                </div>
-                <div class="w-12 h-8 bg-white/10 rounded flex items-center justify-center border border-white/5">
-                    <span class="text-[10px] font-bold text-white/50">BCA</span>
-                </div>
-                <div class="w-12 h-8 bg-white/10 rounded flex items-center justify-center border border-white/5">
-                    <span class="text-[10px] font-bold text-white/50">Mandiri</span>
-                </div>
+<footer class="bg-[#040914] w-full pt-16 pb-8 border-t border-white/5 relative overflow-hidden">
+    <!-- Decorative glow -->
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-1 bg-gradient-to-r from-transparent via-blue-500/50 to-transparent"></div>
+    
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 md:gap-8 max-w-[1280px] mx-auto px-6">
+        <div class="col-span-1 sm:col-span-2 md:col-span-1">
+            <a class="text-2xl font-black italic tracking-tighter text-blue-500 flex items-center gap-2 mb-4" href="#">
+                <span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">sports_esports</span> YASS
+            </a>
+            <p class="text-sm text-slate-400 mb-6 leading-relaxed">YASS Game Store adalah platform topup game termurah, tercepat, dan terpercaya di Indonesia. Otomatis 24/7 tanpa ribet.</p>
+            <div class="flex items-center gap-4">
+                <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-blue-500/20 hover:text-blue-400 text-slate-400 transition-colors">
+                    <span class="material-symbols-outlined text-[20px]">photo_camera</span>
+                </a>
+                <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-green-500/20 hover:text-green-400 text-slate-400 transition-colors">
+                    <span class="material-symbols-outlined text-[20px]">chat</span>
+                </a>
             </div>
         </div>
+        
+        <div>
+            <h4 class="font-bold text-white mb-6 uppercase tracking-wider text-sm">Peta Situs</h4>
+            <ul class="space-y-4">
+                <li><a class="text-sm text-blue-400 font-medium hover:text-blue-300 transition-colors flex items-center gap-2" href="#"><span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span> Beranda</a></li>
+                <li><a class="text-sm text-slate-400 hover:text-white transition-colors" href="#">Hubungi Kami</a></li>
+                <li><a class="text-sm text-slate-400 hover:text-white transition-colors" href="#">Syarat & Ketentuan</a></li>
+                <li><a class="text-sm text-slate-400 hover:text-white transition-colors" href="#">Kebijakan Privasi</a></li>
+            </ul>
+        </div>
+        
+        <div>
+            <h4 class="font-bold text-white mb-6 uppercase tracking-wider text-sm">Produk</h4>
+            <ul class="space-y-4">
+                <li><a class="text-sm text-slate-400 hover:text-white transition-colors" href="#">Mobile Legends</a></li>
+                <li><a class="text-sm text-slate-400 hover:text-white transition-colors" href="#">Free Fire</a></li>
+                <li><a class="text-sm text-slate-400 hover:text-white transition-colors" href="#">PUBG Mobile</a></li>
+                <li><a class="text-sm text-slate-400 hover:text-white transition-colors" href="#">Genshin Impact</a></li>
+            </ul>
+        </div>
+        
+        <div>
+            <h4 class="font-bold text-white mb-6 uppercase tracking-wider text-sm">Pembayaran</h4>
+            <div class="flex flex-wrap gap-2">
+                <div class="w-[50px] h-[32px] bg-white rounded flex items-center justify-center shadow-inner">
+                    <span class="text-[10px] font-black text-blue-800 italic">BCA</span>
+                </div>
+                <div class="w-[50px] h-[32px] bg-[#00A5CF] rounded flex items-center justify-center shadow-inner">
+                    <span class="text-[10px] font-black text-white">DANA</span>
+                </div>
+                <div class="w-[50px] h-[32px] bg-[#4C3494] rounded flex items-center justify-center shadow-inner">
+                    <span class="text-[10px] font-black text-white italic">OVO</span>
+                </div>
+                <div class="w-[50px] h-[32px] bg-[#ED1C24] rounded flex items-center justify-center shadow-inner">
+                    <span class="text-[10px] font-black text-white">QRIS</span>
+                </div>
+                <div class="w-[50px] h-[32px] bg-white rounded flex items-center justify-center shadow-inner border border-slate-200">
+                    <span class="text-[10px] font-black text-blue-600">MANDIRI</span>
+                </div>
+            </div>
+            <p class="text-xs text-slate-500 mt-4">Transkasi aman & terenkripsi</p>
+        </div>
     </div>
-    <div class="max-w-[1280px] mx-auto px-6 mt-12 pt-6 border-t border-white/5 text-center">
-        <p class="text-sm text-slate-400">© 2024 YASS Game Store - Premium Gaming Store. All Rights Reserved.</p>
+    
+    <div class="max-w-[1280px] mx-auto px-6 mt-16 pt-6 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4">
+        <p class="text-sm text-slate-500">© 2024 YASS Game Store. All Rights Reserved.</p>
+        <p class="text-sm text-slate-500 flex items-center gap-1">Made with <span class="material-symbols-outlined text-red-500 text-[16px]" style="font-variation-settings: 'FILL' 1;">favorite</span> in Indonesia</p>
     </div>
 </footer>
 
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // --- Mobile Menu Logic ---
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const closeMenuBtn = document.getElementById('close-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        if(mobileMenuBtn && closeMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.remove('translate-x-full');
+            });
+
+            closeMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.add('translate-x-full');
+            });
+        }
+
+        // --- Navbar Scroll Effect ---
+        const header = document.querySelector('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                header.classList.add('py-2');
+                header.classList.remove('py-3', 'md:py-4');
+                header.classList.add('bg-[#060e20]/95');
+                header.classList.remove('bg-[#060e20]/80');
+            } else {
+                header.classList.remove('py-2');
+                header.classList.add('py-3', 'md:py-4');
+                header.classList.remove('bg-[#060e20]/95');
+                header.classList.add('bg-[#060e20]/80');
+            }
+        });
+
+        // --- Slider Logic ---
+        const sliderContainer = document.getElementById('slider-container');
+        const slides = document.querySelectorAll('.slide-item');
+        const nextBtn = document.getElementById('next-slide');
+        const prevBtn = document.getElementById('prev-slide');
+        const indicators = document.querySelectorAll('.indicator');
+        
+        if (slides.length > 0) {
+            let currentSlide = 0;
+            const slideCount = slides.length;
+            let autoSlideInterval;
+
+            const updateSlider = () => {
+                // Geser container (menggunakan flex translateX)
+                sliderContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
+                
+                // Update indicator styling (dot di bagian bawah)
+                indicators.forEach((ind, index) => {
+                    if (index === currentSlide) {
+                        ind.classList.remove('w-1.5', 'md:w-2', 'bg-white/40');
+                        ind.classList.add('w-6', 'md:w-8', 'bg-blue-500', 'active', 'shadow-[0_0_10px_rgba(59,130,246,0.8)]');
+                    } else {
+                        ind.classList.remove('w-6', 'md:w-8', 'bg-blue-500', 'active', 'shadow-[0_0_10px_rgba(59,130,246,0.8)]');
+                        ind.classList.add('w-1.5', 'md:w-2', 'bg-white/40');
+                    }
+                });
+            };
+
+            const nextSlide = () => {
+                currentSlide = (currentSlide + 1) % slideCount;
+                updateSlider();
+            };
+
+            const prevSlide = () => {
+                currentSlide = (currentSlide - 1 + slideCount) % slideCount;
+                updateSlider();
+            };
+
+            const goToSlide = (index) => {
+                currentSlide = index;
+                updateSlider();
+            };
+
+            const startInterval = () => {
+                // Auto slide setiap 8000ms (8 detik)
+                autoSlideInterval = setInterval(nextSlide, 8000); 
+            };
+
+            const resetInterval = () => {
+                clearInterval(autoSlideInterval);
+                startInterval();
+            };
+
+            // Event Listeners tombol slider
+            if(nextBtn) {
+                nextBtn.addEventListener('click', () => {
+                    nextSlide();
+                    resetInterval(); // reset timer saat klik manual
+                });
+            }
+
+            if(prevBtn) {
+                prevBtn.addEventListener('click', () => {
+                    prevSlide();
+                    resetInterval(); // reset timer saat klik manual
+                });
+            }
+            
+            // Event Listeners indikator
+            indicators.forEach(ind => {
+                ind.addEventListener('click', (e) => {
+                    const index = parseInt(e.target.getAttribute('data-index'));
+                    goToSlide(index);
+                    resetInterval();
+                });
+            });
+
+            // Mulai auto slide saat halaman dimuat
+            startInterval();
+        }
+    });
+</script>
 </body>
 </html>
