@@ -4,13 +4,21 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Transaction;
+use App\Services\ProviderService; // Tambahin ini
 use Illuminate\Support\Facades\Log;
 
 class WebhookController extends Controller
 {
+    protected $providerService;
+
+    // Inject ProviderService
+    public function __construct(ProviderService $providerService)
+    {
+        $this->providerService = $providerService;
+    }
+
     public function handleTripay(Request $request)
     {
-        // 1. Validasi ini beneran dari Tripay atau bukan (Wajib!)
         $callbackSignature = $request->server('HTTP_X_CALLBACK_SIGNATURE');
         $json = $request->getContent();
         $signature = hash_hmac('sha256', $json, env('TRIPAY_PRIVATE_KEY'));
@@ -24,21 +32,20 @@ class WebhookController extends Controller
         $event = $request->header('HTTP_X_CALLBACK_EVENT');
 
         if ($event === 'payment_status') {
-            // 2. Cari transaksi di database kita
             $transaction = Transaction::where('reference_id', $data->merchant_ref)->first();
 
             if (!$transaction) {
                 return response()->json(['success' => false, 'message' => 'Transaction not found'], 404);
             }
 
-            // 3. Update status kalau lunas
+            // BAGIAN PALING EPIC DI SINI
             if ($data->status === 'PAID' && $transaction->status === 'pending') {
+                // 1. Ubah status transaksi jadi processing
                 $transaction->update(['status' => 'processing']);
                 
-                // DI SINI TEMPAT KITA NEMBAK DIGIFLAZZ BUAT KIRIM DIAMOND!
-                // Nanti kita panggil ProviderService->processTopup($transaction)
+                // 2. Langsung tembak Digiflazz buat ngisi diamondnya!
+                $this->providerService->placeOrder($transaction);
             } 
-            // 4. Update status kalau kedaluwarsa
             elseif ($data->status === 'EXPIRED' || $data->status === 'FAILED') {
                 $transaction->update(['status' => 'failed']);
             }

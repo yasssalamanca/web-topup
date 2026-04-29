@@ -3,8 +3,10 @@
 namespace App\Services;
 
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Transaction;
 
 class ProviderService
 {
@@ -72,5 +74,51 @@ class ProviderService
         }
 
         return true;
+    }
+
+    /**
+     * Fungsi buat order/topup ke Digiflazz
+     */
+    public function placeOrder(Transaction $transaction)
+    {
+        // 1. Gabungin target_id (ID Player) dan target_zone (Server ID)
+        // Kalau ML kan formatnya IDPlayerServerID, contoh: 123456781234
+        $customerNo = $transaction->target_id;
+        if ($transaction->target_zone) {
+            $customerNo .= $transaction->target_zone;
+        }
+
+        // 2. Bikin signature untuk transaksi (Beda sama signature pricelist)
+        // Rumus Digiflazz buat transaksi: md5(username + api_key + ref_id)
+        $signature = $this->generateSign($transaction->reference_id);
+
+        // 3. Tembak API Digiflazz buat order
+        $response = Http::post("{$this->baseUrl}/transaction", [
+            'username' => $this->username,
+            'buyer_sku_code' => $transaction->product->sku,
+            'customer_no' => $customerNo,
+            'ref_id' => $transaction->reference_id,
+            'sign' => $signature,
+            // 'testing' => true // BUKA KOMEN INI KALAU LAGI PAKE MODE SANDBOX/TESTING
+        ]);
+
+        $data = $response->json('data');
+
+        if ($response->successful() && isset($data['status'])) {
+            // Kalau dari Digiflazz statusnya Sukses atau Pending (karena kadang butuh waktu proses)
+            if ($data['status'] === 'Sukses' || $data['status'] === 'Pending') {
+                $transaction->update([
+                    'provider_reference' => $data['sn'] ?? null, // SN (Serial Number) / Bukti topup
+                    // Kita set 'processing' aja dulu. Nanti kalau ada webhook dari Digiflazz baru kita set 'success'
+                    'status' => 'processing'
+                ]);
+                return true;
+            }
+        }
+
+        // Kalau saldonya lu habis, atau server Digiflazz error
+        $transaction->update(['status' => 'failed']);
+        Log::error('Gagal Topup Digiflazz: ' . $response->body());
+        return false;
     }
 }
