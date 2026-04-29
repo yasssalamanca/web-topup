@@ -8,25 +8,29 @@ use Illuminate\Support\Str;
 
 class TransactionService
 {
-    /**
-     * Fungsi utama buat bikin transaksi baru
-     */
+    // 1. Tambahin variable ini
+    protected $paymentService;
+
+    // 2. Inject PaymentService ke dalam constructor
+    public function __construct(PaymentService $paymentService)
+    {
+        $this->paymentService = $paymentService;
+    }
+
     public function createTransaction($userId, $productId, $targetId, $targetZone, $paymentMethodId)
     {
-        // 1. Ambil data produk (Biar dapet harga aslinya, jangan percaya harga dari Front-End!)
         $product = Product::findOrFail($productId);
-
-        // 2. Kalkulasi Biaya (Anggap aja fee admin flat Rp 1.500)
-        $fee = 1500;
+        
+        // Asumsi fee admin. Nanti bisa ambil dari database tabel payment_methods
+        $fee = 1500; 
         $totalAmount = $product->price + $fee;
 
-        // 3. Bikin Invoice/Reference ID yang keren (Contoh: INV-20260429-A8F9B2)
         $referenceId = 'INV-' . date('Ymd') . '-' . strtoupper(Str::random(6));
 
-        // 4. Eksekusi simpan ke Database
+        // 3. Simpan transaksi awal (status: pending, payment_url: null)
         $transaction = Transaction::create([
             'reference_id' => $referenceId,
-            'user_id' => $userId, // Bisa null kalau guest checkout
+            'user_id' => $userId,
             'product_id' => $productId,
             'payment_method_id' => $paymentMethodId,
             'target_id' => $targetId,
@@ -37,8 +41,18 @@ class TransactionService
             'total_amount' => $totalAmount,
         ]);
 
-        // Nanti di sini kita bisa tambahin logika buat manggil API Provider Top-up
+        // 4. INI BAGIAN AJAIBNYA: Langsung minta tagihan ke Tripay
+        try {
+            $paymentData = $this->paymentService->requestPayment($transaction);
+            
+            // Kita refresh data transaksi biar object $transaction-nya 
+            // sekarang udah punya payment_url yang tadi diupdate sama PaymentService
+            return $transaction->refresh();
 
-        return $transaction;
+        } catch (\Exception $e) {
+            // Kalau gagal minta tagihan ke Tripay, mending transaksinya kita gagal-in sekalian
+            $transaction->update(['status' => 'failed']);
+            throw new \Exception("Gagal dapet link bayar: " . $e->getMessage());
+        }
     }
 }
