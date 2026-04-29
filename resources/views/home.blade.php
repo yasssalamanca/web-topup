@@ -145,10 +145,10 @@
                 <!-- Slide 1 -->
                 <div class="slide-item relative h-full flex-shrink-0">
                     <div class="absolute inset-0 bg-gradient-to-r from-[#060e20] via-[#060e20]/60 to-transparent z-10"></div>
-                    <img alt="Promo Mobile Legends" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDyNP6R0L9O_CYnnWSNFJoSd2376SIWPO3-iB1QuVZn4jE1I4rj9wjR5cAQvLvRKBqC67QAAJZneqWB3tBBT48qL4odW8pKk9fWurtVuqg7ONmMK5vZVNLj1Ra6LWZPl3o_yHir4X1FdGEdKGS-qzsk3fczeDjEb9kwZzhN6h-MTjhRjBJcAsQ4NJYSiLdT_PWgGvIPZwVVA7pX4TzDLyUUzDq_nY169_1rciUq2frvGi22KL8KO9mJl0Dt9quXL6kdyWs6mhYQOzMZ"/>
+                    <img alt="Promo Mobile Legends" class="w-full h-full object-cover" src="{{ asset('assets/images/banners/slider-1.jpg') }}"/>
                     <div class="absolute inset-y-0 left-0 z-20 flex flex-col justify-center px-6 md:px-14 max-w-xl">
                         <span class="text-[10px] md:text-xs font-bold text-yellow-400 mb-2 md:mb-4 inline-block w-max px-3 py-1 bg-yellow-500/20 rounded-full border border-yellow-500/30 backdrop-blur-md uppercase tracking-wider">SUPER PROMO</span>
-                        <h1 class="font-display text-2xl sm:text-4xl md:text-6xl font-extrabold text-white mb-2 md:mb-4 leading-[1.1] text-glow">YASS Super <br/><span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">Mega Sale</span></h1>
+                        <h1 class="font-display text-2xl sm:text-4xl md:text-6xl font-extrabold text-white mb-2 md:mb-4 leading-[1.1] text-glow">SUPER Yass <br/><span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">Mega Sale</span></h1>
                         <p class="text-xs sm:text-sm md:text-lg text-slate-300 mb-4 md:mb-8 max-w-sm md:max-w-md line-clamp-2 md:line-clamp-none">Dapatkan diskon hingga 50% untuk semua topup game favoritmu minggu ini. Stock sangat terbatas!</p>
                         <button class="w-fit text-xs md:text-base font-semibold text-white bg-gradient-to-r from-blue-600 to-cyan-500 px-6 md:px-8 py-2.5 md:py-3.5 rounded-full shadow-[0_0_20px_rgba(6,182,212,0.4)] hover:scale-105 transition-transform flex items-center gap-2">
                             Topup Sekarang <span class="material-symbols-outlined text-sm md:text-base">arrow_forward</span>
@@ -159,7 +159,7 @@
                 <!-- Slide 2 -->
                 <div class="slide-item relative h-full flex-shrink-0">
                     <div class="absolute inset-0 bg-gradient-to-r from-[#060e20] via-[#060e20]/60 to-transparent z-10"></div>
-                    <img alt="Promo HSR" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCw5NAGubfnatfwiY04GuFeKnoy0NC_jo30SP6lpIQRaxqMb5wV-FuO-Zqw4wzknLiEXYt0Ah4AvkolhcSk_rsICUiURWHT6rI1BoZLKfngfurUVlt0Imz8wKHiEoDq7eV94AZMCBJArAXnTAAnItRm5nrtzgO15CBqYB1P5q5BORow6z1O6s2DdGGGHbr4o5GUbnxI-1nx9IDVOSPljFoyKSXTjsfSV1foh6us126FHOXVdq55cVM8mUWNEHxBU-iuXoy0x82KIvSU"/>
+                    <img alt="Promo HSR" class="w-full h-full object-cover" src="{{ asset('assets/images/banners/slider-2.jpg') }}"/>
                     <div class="absolute inset-y-0 left-0 z-20 flex flex-col justify-center px-6 md:px-14 max-w-xl">
                         <span class="text-[10px] md:text-xs font-bold text-purple-400 mb-2 md:mb-4 inline-block w-max px-3 py-1 bg-purple-500/20 rounded-full border border-purple-500/30 backdrop-blur-md uppercase tracking-wider">NEW BANNER</span>
                         <h1 class="font-display text-2xl sm:text-4xl md:text-6xl font-extrabold text-white mb-2 md:mb-4 leading-[1.1] text-glow">Honkai: <br/><span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">Star Rail</span></h1>
@@ -173,7 +173,7 @@
                 <!-- Slide 3 -->
                 <div class="slide-item relative h-full flex-shrink-0">
                     <div class="absolute inset-0 bg-gradient-to-r from-[#060e20] via-[#060e20]/60 to-transparent z-10"></div>
-                    <img alt="Promo Valorant" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIGVgjwovKaY3W3Xwsg8yBeRXV53_zfcXIyXonIqD2qZTy0AM-TmmoX-a0rG5u8qKyU0wUORyT8tnOAyXvAQOKpty-UIh49RtN551TjLT_V25p2Me6dKAwXaHg-xpz1f-8veZv7BbOPeSkEZXVlZHKxSQv21qqZ96EU9tFh8uuHXBvrmLQw--n9kRto_jzeh-VQK1-pllyLKrAMKRED9GR-BMwl8plAr0mBT3rZcNnDgDJ95YMuSx1bjYNBqcdf_MO2SmjLGqsRTq4"/>
+                    <img alt="Promo Valorant" class="w-full h-full object-cover" src="{{ asset('assets/images/banners/slider-3.jpg') }}"/>
                     <div class="absolute inset-y-0 left-0 z-20 flex flex-col justify-center px-6 md:px-14 max-w-xl">
                         <span class="text-[10px] md:text-xs font-bold text-orange-400 mb-2 md:mb-4 inline-block w-max px-3 py-1 bg-orange-500/20 rounded-full border border-orange-500/30 backdrop-blur-md uppercase tracking-wider">FLASH DEALS</span>
                         <h1 class="font-display text-2xl sm:text-4xl md:text-6xl font-extrabold text-white mb-2 md:mb-4 leading-[1.1] text-glow">Mobile Legends <br/><span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-500">Diamond Pass</span></h1>
@@ -246,7 +246,7 @@
                 <div class="absolute top-0 right-0 bg-gradient-to-bl from-orange-500 to-red-500 text-white text-[9px] md:text-[10px] px-3 py-1 rounded-bl-xl font-bold z-10 uppercase tracking-wider shadow-lg">HOT</div>
                 <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/80 z-0"></div>
                 <div class="relative w-20 h-20 md:w-24 md:h-24 rounded-2xl overflow-hidden shadow-2xl border border-white/10 group-hover:border-blue-400/50 transition-colors z-10">
-                    <img alt="Mobile Legends" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIGVgjwovKaY3W3Xwsg8yBeRXV53_zfcXIyXonIqD2qZTy0AM-TmmoX-a0rG5u8qKyU0wUORyT8tnOAyXvAQOKpty-UIh49RtN551TjLT_V25p2Me6dKAwXaHg-xpz1f-8veZv7BbOPeSkEZXVlZHKxSQv21qqZ96EU9tFh8uuHXBvrmLQw--n9kRto_jzeh-VQK1-pllyLKrAMKRED9GR-BMwl8plAr0mBT3rZcNnDgDJ95YMuSx1bjYNBqcdf_MO2SmjLGqsRTq4"/>
+                    <img alt="Mobile Legends" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="{{ asset('assets/images/games/icons/mlbb.png') }}"/>
                 </div>
                 <div class="z-10 mt-1">
                     <h3 class="text-sm md:text-base font-bold text-white mb-1 group-hover:text-blue-400 transition-colors line-clamp-1">Mobile Legends</h3>
@@ -258,7 +258,7 @@
             <a class="glass-panel rounded-2xl p-4 md:p-5 flex flex-col items-center text-center gap-3 md:gap-4 relative overflow-hidden group transition-all duration-300 hover:-translate-y-2" href="#">
                 <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/80 z-0"></div>
                 <div class="relative w-20 h-20 md:w-24 md:h-24 rounded-2xl overflow-hidden shadow-2xl border border-white/10 group-hover:border-blue-400/50 transition-colors z-10">
-                    <img alt="Free Fire" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtwor8T_m6nzVNzSu2DlXAVxiRhUkxHZytqb8WGn37YkyHCTGlnrOhNVX4v-w9s7jMTN9RhuPTchO0ttoVmyVF1KFiqDOk4hzTGnl1P6vTOAkLUTk4EjThU8Uayzxx9HyMTp5GLkFKpRaJxujGHOU2aK-Sa6doreM8ez8gNHjX_2T4POXuvtQnG8cKNnCrWJM9Uj8bN_yOiKaAdiGMUA0cYeO02_QsRsKyXcm5Kxw6e0xGZv731OWFU3kYhiMgQc5J5DEkTJfUabIa"/>
+                    <img alt="Free Fire" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="{{ asset('assets/images/games/icons/free-fire.png') }}"/>
                 </div>
                 <div class="z-10 mt-1">
                     <h3 class="text-sm md:text-base font-bold text-white mb-1 group-hover:text-blue-400 transition-colors line-clamp-1">Free Fire</h3>
@@ -271,7 +271,7 @@
                 <div class="absolute top-0 right-0 bg-gradient-to-bl from-blue-500 to-cyan-500 text-white text-[9px] md:text-[10px] px-3 py-1 rounded-bl-xl font-bold z-10 uppercase tracking-wider shadow-lg">SALE</div>
                 <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/80 z-0"></div>
                 <div class="relative w-20 h-20 md:w-24 md:h-24 rounded-2xl overflow-hidden shadow-2xl border border-white/10 group-hover:border-blue-400/50 transition-colors z-10">
-                    <img alt="PUBG Mobile" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9_rXqvV-Sa7PRcoKqaICV86ISTkKfNu1EhS3c7uH-FiReNGrsXDl_R2yRRw3heor4ZbEcULbcVd4aElXGIOtsPglwR_lTiFTYXsI_zCovt2aw9eEP_V-yR1FzNbtIy3BJqrwAEoIz-v_rbSHLYFAu7nwSHR_v--bMvKib0mzXQAS1AmfFSwyVg_RB4ksGv996IVh5fscTzfTkNLM6Hws8e5N7xcZ8vr1g-K_6aXUgjXFLxetxXvpWJ4SDrf9EYJft11DGw0B6xxCz"/>
+                    <img alt="PUBG Mobile" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="{{ asset('assets/images/games/icons/pubg.png') }}"/>
                 </div>
                 <div class="z-10 mt-1">
                     <h3 class="text-sm md:text-base font-bold text-white mb-1 group-hover:text-blue-400 transition-colors line-clamp-1">PUBG Mobile</h3>
@@ -283,7 +283,7 @@
             <a class="glass-panel rounded-2xl p-4 md:p-5 flex flex-col items-center text-center gap-3 md:gap-4 relative overflow-hidden group transition-all duration-300 hover:-translate-y-2" href="#">
                 <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/80 z-0"></div>
                 <div class="relative w-20 h-20 md:w-24 md:h-24 rounded-2xl overflow-hidden shadow-2xl border border-white/10 group-hover:border-blue-400/50 transition-colors z-10">
-                    <img alt="Valorant" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVtO1HDjpk2Q_OoL5L-OrFFgfobZ7J8TZcozEIn-If3imkTzJxJo5t6ji8rjmL4i2CB8vL5b1aEHb1eLW-tuCAUyP1JVQ-VRH0CE5RV9ZX0njcn_xtHHTsMoQUTuDWD6-2fsL4dOzSkiDSDkNYGqO6NkUt2Xtf2OQrt_85_4r8cckGJefKZ9cklgYR2RdAEBBXPCxweRxZnJw9IcOUvpuFGuLvzVaAG-b56FDYcdr34IW2MdHO9v0JmG7nDT2gMPT_ln0QVFIL_XGR"/>
+                    <img alt="Valorant" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="{{ asset('assets/images/games/icons/valorant.png') }}"/>
                 </div>
                 <div class="z-10 mt-1">
                     <h3 class="text-sm md:text-base font-bold text-white mb-1 group-hover:text-blue-400 transition-colors line-clamp-1">Valorant</h3>
@@ -295,7 +295,7 @@
             <a class="glass-panel rounded-2xl p-4 md:p-5 flex flex-col items-center text-center gap-3 md:gap-4 relative overflow-hidden group transition-all duration-300 hover:-translate-y-2 border-yellow-500/20 hover:border-yellow-400/50 shadow-[0_0_20px_rgba(234,179,8,0.05)]" href="#">
                 <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/80 z-0"></div>
                 <div class="relative w-20 h-20 md:w-24 md:h-24 rounded-2xl overflow-hidden shadow-2xl border border-yellow-500/40 group-hover:border-yellow-400 transition-colors z-10">
-                    <img alt="Genshin Impact" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC10ziIAZYqtomlpKtdQNkbxw_pATG8oyYH9DiEONqm7CRLBCnQVOzXNCrIU8AJ7LZ28WGSIJedBUpfB1ltfrM2J7YZcN2JkEAk6Xk-uag3ilC8gwTHtUtUbGQrOLoQCyHh2FPWEQLugvN_cndYy6KIkKBndV-iokvquU36K33_wKU6brDibMUl4xF46yzOFFl7QiTj5ghC7PNMyhxvr4PyWvkdv4cZYt8ToQo3lBDUmONgLeK_MHM_CKmO7pzCTgNqJ7e4EP0p7Z7f"/>
+                    <img alt="Genshin Impact" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="{{ asset('assets/images/games/icons/genshin.png') }}"/>
                 </div>
                 <div class="z-10 mt-1">
                     <h3 class="text-sm md:text-base font-bold text-yellow-300 mb-1 group-hover:text-yellow-200 transition-colors line-clamp-1">Genshin Impact</h3>
@@ -307,7 +307,7 @@
             <a class="glass-panel rounded-2xl p-4 md:p-5 flex flex-col items-center text-center gap-3 md:gap-4 relative overflow-hidden group transition-all duration-300 hover:-translate-y-2" href="#">
                 <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/80 z-0"></div>
                 <div class="relative w-20 h-20 md:w-24 md:h-24 rounded-2xl overflow-hidden shadow-2xl border border-white/10 group-hover:border-blue-400/50 transition-colors z-10">
-                    <img alt="Honkai Star Rail" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCw5NAGubfnatfwiY04GuFeKnoy0NC_jo30SP6lpIQRaxqMb5wV-FuO-Zqw4wzknLiEXYt0Ah4AvkolhcSk_rsICUiURWHT6rI1BoZLKfngfurUVlt0Imz8wKHiEoDq7eV94AZMCBJArAXnTAAnItRm5nrtzgO15CBqYB1P5q5BORow6z1O6s2DdGGGHbr4o5GUbnxI-1nx9IDVOSPljFoyKSXTjsfSV1foh6us126FHOXVdq55cVM8mUWNEHxBU-iuXoy0x82KIvSU"/>
+                    <img alt="Honkai Star Rail" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="{{ asset('assets/images/games/icons/hsr.png') }}"/>
                 </div>
                 <div class="z-10 mt-1">
                     <h3 class="text-sm md:text-base font-bold text-white mb-1 group-hover:text-blue-400 transition-colors line-clamp-1">Honkai: Star Rail</h3>
@@ -323,7 +323,7 @@
             <!-- Large Bento Box -->
             <div class="lg:col-span-2 glass-panel rounded-3xl p-6 md:p-10 relative overflow-hidden min-h-[250px] md:min-h-[350px] flex flex-col justify-end group">
                 <div class="absolute inset-0 z-0 bg-[#0a1930]">
-                    <img alt="Special Event" class="w-full h-full object-cover opacity-30 group-hover:scale-105 group-hover:opacity-40 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA60iqEhP3guVgy0qC2UtlQEi-aV3DLOTM20S3NXYrTVkySXNBIYbp6BRsALmBu3x90c7m7e_z0vRF9sGj_gDHBNKy4txqIcpjYRalvYJD2WTpwKxXTHUot3hGtjg78R9MbgXa36W4e_qA0g6zVVtWhh6tORwkUfn6brJlRfPLniwC2Za4sv9q6fyFPHmv78TFQERNjgXbFN1Vbz5QG1RgCweAQv4ji-iStlCjh3y82Pl41CSbbV_7haEHBjul_784x0c6PAlIPZuQd"/>
+                    <img alt="Special Event" class="w-full h-full object-cover opacity-30 group-hover:scale-105 group-hover:opacity-40 transition-all duration-700" src="{{ asset('assets/images/banners/promo-event.jpg') }}"/>
                     <div class="absolute inset-0 bg-gradient-to-t from-[#060e20] via-[#060e20]/80 to-transparent"></div>
                 </div>
                 <div class="relative z-10 w-full md:max-w-xl">

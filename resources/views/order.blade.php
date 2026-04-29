@@ -84,9 +84,9 @@
     <!-- Game Banner -->
     <div class="relative w-full h-[180px] md:h-[250px] rounded-2xl overflow-hidden mb-8 border border-white/10 shadow-2xl">
         <div class="absolute inset-0 bg-gradient-to-t from-[#060e20] via-[#060e20]/80 to-transparent z-10"></div>
-        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDyNP6R0L9O_CYnnWSNFJoSd2376SIWPO3-iB1QuVZn4jE1I4rj9wjR5cAQvLvRKBqC67QAAJZneqWB3tBBT48qL4odW8pKk9fWurtVuqg7ONmMK5vZVNLj1Ra6LWZPl3o_yHir4X1FdGEdKGS-qzsk3fczeDjEb9kwZzhN6h-MTjhRjBJcAsQ4NJYSiLdT_PWgGvIPZwVVA7pX4TzDLyUUzDq_nY169_1rciUq2frvGi22KL8KO9mJl0Dt9quXL6kdyWs6mhYQOzMZ" class="w-full h-full object-cover" alt="Banner">
+        <img src="{{ asset('assets/images/games/banners/mlbb-banner.jpg') }}" class="w-full h-full object-cover" alt="Banner">
         <div class="absolute bottom-0 left-0 z-20 p-6 flex items-end gap-6 w-full">
-            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIGVgjwovKaY3W3Xwsg8yBeRXV53_zfcXIyXonIqD2qZTy0AM-TmmoX-a0rG5u8qKyU0wUORyT8tnOAyXvAQOKpty-UIh49RtN551TjLT_V25p2Me6dKAwXaHg-xpz1f-8veZv7BbOPeSkEZXVlZHKxSQv21qqZ96EU9tFh8uuHXBvrmLQw--n9kRto_jzeh-VQK1-pllyLKrAMKRED9GR-BMwl8plAr0mBT3rZcNnDgDJ95YMuSx1bjYNBqcdf_MO2SmjLGqsRTq4" class="w-20 h-20 md:w-28 md:h-28 rounded-2xl border-2 border-blue-500 shadow-[0_0_20px_rgba(59,130,246,0.5)] bg-surface">
+            <img src="{{ asset('assets/images/games/icons/mlbb.png') }}" class="w-20 h-20 md:w-28 md:h-28 rounded-2xl border-2 border-blue-500 shadow-[0_0_20px_rgba(59,130,246,0.5)] bg-surface">
             <div class="mb-2">
                 <h1 class="font-display text-2xl md:text-4xl font-bold text-white mb-1">{{ ucwords(str_replace('-', ' ', $game)) }}</h1>
                 <p class="text-xs md:text-sm text-blue-400 font-semibold flex items-center gap-1">
