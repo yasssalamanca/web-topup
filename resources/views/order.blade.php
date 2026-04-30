@@ -84,13 +84,13 @@
     <!-- Game Banner -->
     <div class="relative w-full h-[180px] md:h-[250px] rounded-2xl overflow-hidden mb-8 border border-white/10 shadow-2xl">
         <div class="absolute inset-0 bg-gradient-to-t from-[#060e20] via-[#060e20]/80 to-transparent z-10"></div>
-        <img src="{{ asset('assets/images/games/banners/mlbb-banner.jpg') }}" class="w-full h-full object-cover" alt="Banner">
+        <img src="{{ asset($config['banner']) }}" class="w-full h-full object-cover" alt="Banner">
         <div class="absolute bottom-0 left-0 z-20 p-6 flex items-end gap-6 w-full">
-            <img src="{{ asset('assets/images/games/icons/mlbb.png') }}" class="w-20 h-20 md:w-28 md:h-28 rounded-2xl border-2 border-blue-500 shadow-[0_0_20px_rgba(59,130,246,0.5)] bg-surface">
+            <img src="{{ asset($config['icon']) }}" class="w-20 h-20 md:w-28 md:h-28 rounded-2xl border-2 border-blue-500 shadow-[0_0_20px_rgba(59,130,246,0.5)] bg-surface">
             <div class="mb-2">
-                <h1 class="font-display text-2xl md:text-4xl font-bold text-white mb-1">{{ ucwords(str_replace('-', ' ', $game)) }}</h1>
+                <h1 class="font-display text-2xl md:text-4xl font-bold text-white mb-1">{{ $config['name'] }}</h1>
                 <p class="text-xs md:text-sm text-blue-400 font-semibold flex items-center gap-1">
-                    <span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">verified</span> Verified Publisher
+                    <span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">verified</span> {{ $config['publisher'] }}
                 </p>
             </div>
         </div>
@@ -109,19 +109,21 @@
                     <h2 class="text-xl font-bold text-white">Masukkan Tujuan</h2>
                 </div>
                 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="grid grid-cols-1 @if($config['has_zone_id']) md:grid-cols-2 @endif gap-4">
                     <div>
-                        <label class="block text-sm font-semibold text-slate-300 mb-2">User ID <span class="text-red-500">*</span></label>
-                        <input type="text" id="target_id" name="target_id" required class="w-full bg-surface-light border border-white/10 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all" placeholder="Contoh: 12345678">
+                        <label class="block text-sm font-semibold text-slate-300 mb-2">{{ $config['id_label'] }} <span class="text-red-500">*</span></label>
+                        <input type="text" id="target_id" name="target_id" required class="w-full bg-surface-light border border-white/10 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all" placeholder="{{ $config['id_placeholder'] }}">
                     </div>
+                    @if($config['has_zone_id'])
                     <div>
-                        <label class="block text-sm font-semibold text-slate-300 mb-2">Zone ID <span class="text-red-500">*</span></label>
-                        <input type="text" id="target_zone" name="target_zone" required class="w-full bg-surface-light border border-white/10 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all" placeholder="Contoh: 1234">
+                        <label class="block text-sm font-semibold text-slate-300 mb-2">{{ $config['zone_label'] }} <span class="text-red-500">*</span></label>
+                        <input type="text" id="target_zone" name="target_zone" required class="w-full bg-surface-light border border-white/10 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all" placeholder="{{ $config['zone_placeholder'] }}">
                     </div>
+                    @endif
                 </div>
                 <p class="text-xs text-slate-500 mt-3 flex items-start gap-1">
                     <span class="material-symbols-outlined text-[14px]">info</span>
-                    Untuk mengetahui User ID Anda, silakan klik menu profile dibagian kiri atas pada menu utama game.
+                    {{ $config['info_text'] }}
                 </p>
             </section>
 
@@ -280,9 +282,12 @@
         const total = selectedPrice + selectedFee;
         summaryPrice.innerText = formatRupiah(total);
 
-        // Check if all filled
+        // Check if all required fields are filled
         const targetId = document.getElementById('target_id').value;
-        if (productRadio && paymentRadio && targetId) {
+        const hasZoneId = {{ $config['has_zone_id'] ? 'true' : 'false' }};
+        const targetZone = hasZoneId ? document.getElementById('target_zone').value : 'filled'; // bypass zone check if not needed
+        
+        if (productRadio && paymentRadio && targetId && targetZone) {
             btnBuy.disabled = false;
             btnBuy.classList.remove('from-slate-600', 'to-slate-500', 'cursor-not-allowed');
             btnBuy.classList.add('from-blue-600', 'to-cyan-500', 'hover:scale-105', 'shadow-[0_0_20px_rgba(6,182,212,0.4)]');
@@ -297,7 +302,9 @@
 
     // Add listeners to text inputs to trigger check
     document.getElementById('target_id').addEventListener('input', updateCheckout);
+    @if($config['has_zone_id'])
     document.getElementById('target_zone').addEventListener('input', updateCheckout);
+    @endif
 
     function submitOrder() {
         const form = document.getElementById('order-form');
