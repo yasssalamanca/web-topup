@@ -190,6 +190,44 @@
 
                 <!-- Tab Content: Kalkulator -->
                 <div id="tab-calc" class="hidden">
+                    
+                    <!-- Info Harga Per Bintang -->
+                    <div class="bg-blue-500/10 border border-blue-500/20 rounded-xl p-4 mb-6">
+                        <h3 class="text-xs font-bold text-blue-400 mb-3 uppercase tracking-wider flex items-center gap-2">
+                            <span class="material-symbols-outlined text-[16px]">info</span> Daftar Harga Per Bintang
+                        </h3>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-2 text-xs">
+                            <div class="bg-surface-light p-2 rounded-lg border border-white/5 flex flex-col">
+                                <span class="text-slate-400 font-semibold mb-1">Master - GM</span>
+                                <span class="text-white font-bold text-sm">Rp 5.000</span>
+                            </div>
+                            <div class="bg-surface-light p-2 rounded-lg border border-white/5 flex flex-col">
+                                <span class="text-slate-400 font-semibold mb-1">Epic</span>
+                                <span class="text-white font-bold text-sm">Rp 6.000</span>
+                            </div>
+                            <div class="bg-surface-light p-2 rounded-lg border border-white/5 flex flex-col">
+                                <span class="text-slate-400 font-semibold mb-1">Legend</span>
+                                <span class="text-white font-bold text-sm">Rp 7.000</span>
+                            </div>
+                            <div class="bg-surface-light p-2 rounded-lg border border-white/5 flex flex-col">
+                                <span class="text-slate-400 font-semibold mb-1">Mythic Romawi</span>
+                                <span class="text-white font-bold text-sm">Rp 14.000</span>
+                            </div>
+                            <div class="bg-surface-light p-2 rounded-lg border border-white/5 flex flex-col">
+                                <span class="text-slate-400 font-semibold mb-1">Mythic Honor</span>
+                                <span class="text-white font-bold text-sm">Rp 16.000</span>
+                            </div>
+                            <div class="bg-surface-light p-2 rounded-lg border border-white/5 flex flex-col">
+                                <span class="text-slate-400 font-semibold mb-1">Mythic Glory</span>
+                                <span class="text-white font-bold text-sm">Rp 20.000</span>
+                            </div>
+                            <div class="bg-surface-light p-2 rounded-lg border border-white/5 flex flex-col md:col-span-2">
+                                <span class="text-slate-400 font-semibold mb-1">Mythic Immortal</span>
+                                <span class="text-white font-bold text-sm">Rp 24.000</span>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="bg-surface-light rounded-xl p-5 border border-white/5 mb-4">
                         <h3 class="text-sm font-bold text-blue-400 mb-4 flex items-center gap-2"><span class="material-symbols-outlined text-[18px]">keyboard_double_arrow_up</span> Rank Saat Ini</h3>
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
@@ -213,7 +251,7 @@
                             </div>
                             <div>
                                 <label class="block text-xs font-semibold text-slate-400 mb-1">Bintang</label>
-                                <input type="number" id="current_star" value="0" min="0" class="w-full bg-surface border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-blue-500 transition-all calc-input" oninput="validateStar('current'); calculateDynamicPrice()">
+                                <input type="number" id="current_star" value="0" min="0" class="w-full bg-surface border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-blue-500 transition-all calc-input" oninput="validateStar('current'); calculateDynamicPrice()" onblur="enforceMinStar('current')">
                             </div>
                         </div>
                     </div>
@@ -247,7 +285,7 @@
                             </div>
                             <div>
                                 <label class="block text-xs font-semibold text-slate-400 mb-1">Bintang</label>
-                                <input type="number" id="target_star" value="1" min="0" class="w-full bg-surface border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:cyan-500 transition-all calc-input" oninput="validateStar('target'); calculateDynamicPrice()">
+                                <input type="number" id="target_star" value="1" min="0" class="w-full bg-surface border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:cyan-500 transition-all calc-input" oninput="validateStar('target'); calculateDynamicPrice()" onblur="enforceMinStar('target')">
                             </div>
                         </div>
                     </div>
@@ -422,11 +460,25 @@
         let val = parseInt(starEl.value);
         if (isNaN(val)) return;
         
-        const min = config.tiers.length > 0 ? 0 : config.minStar;
         const max = config.maxStar;
         
+        // Hanya validasi batas atas saat mengetik, agar user bisa menghapus angka bebas
         if (val > max) starEl.value = max;
-        if (val < min) starEl.value = min;
+    }
+
+    function enforceMinStar(type) {
+        const rankVal = document.getElementById(type + '_rank').value;
+        const starEl = document.getElementById(type + '_star');
+        const config = rankConfig[rankVal];
+        
+        let val = parseInt(starEl.value);
+        const min = config.tiers.length > 0 ? 0 : config.minStar;
+        
+        // Paksa nilai minimum saat user selesai mengetik (blur)
+        if (isNaN(val) || val < min) {
+            starEl.value = min;
+            calculateDynamicPrice();
+        }
     }
 
     // Initialize dropdowns
