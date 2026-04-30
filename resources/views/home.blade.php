@@ -50,7 +50,6 @@
         }
 
         .slide-item {
-            min-width: 100%;
             transition: opacity 0.5s ease-in-out;
         }
         
@@ -143,7 +142,7 @@
             
             <div id="slider-container" class="flex transition-transform duration-700 ease-in-out h-full w-full">
                 <!-- Slide 1 -->
-                <div class="slide-item relative h-full flex-shrink-0">
+                <div class="slide-item relative h-full flex-shrink-0 overflow-hidden">
                     <div class="absolute inset-0 bg-gradient-to-r from-[#060e20] via-[#060e20]/60 to-transparent z-10"></div>
                     <img alt="Promo Mobile Legends" class="w-full h-full object-cover" src="{{ asset('assets/images/banners/slider-1.jpg') }}"/>
                     <div class="absolute inset-y-0 left-0 z-20 flex flex-col justify-center px-6 md:px-14 max-w-xl">
@@ -157,7 +156,7 @@
                 </div>
 
                 <!-- Slide 2 -->
-                <div class="slide-item relative h-full flex-shrink-0">
+                <div class="slide-item relative h-full flex-shrink-0 overflow-hidden">
                     <div class="absolute inset-0 bg-gradient-to-r from-[#060e20] via-[#060e20]/60 to-transparent z-10"></div>
                     <img alt="Promo HSR" class="w-full h-full object-cover" src="{{ asset('assets/images/banners/slider-2.jpg') }}"/>
                     <div class="absolute inset-y-0 left-0 z-20 flex flex-col justify-center px-6 md:px-14 max-w-xl">
@@ -171,7 +170,7 @@
                 </div>
 
                 <!-- Slide 3 -->
-                <div class="slide-item relative h-full flex-shrink-0">
+                <div class="slide-item relative h-full flex-shrink-0 overflow-hidden">
                     <div class="absolute inset-0 bg-gradient-to-r from-[#060e20] via-[#060e20]/60 to-transparent z-10"></div>
                     <img alt="Promo Valorant" class="w-full h-full object-cover" src="{{ asset('assets/images/banners/slider-3.jpg') }}"/>
                     <div class="absolute inset-y-0 left-0 z-20 flex flex-col justify-center px-6 md:px-14 max-w-xl">
@@ -466,11 +465,18 @@
         if (slides.length > 0) {
             let currentSlide = 0;
             const slideCount = slides.length;
+            
+            // Set explicit width to fix mobile flex container cutoff bugs
+            sliderContainer.style.width = `${slideCount * 100}%`;
+            slides.forEach(slide => {
+                slide.style.width = `${100 / slideCount}%`;
+            });
+            
             let autoSlideInterval;
 
             const updateSlider = () => {
-                // Geser container (menggunakan flex translateX)
-                sliderContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
+                // Geser container dengan hitungan proporsional akurat
+                sliderContainer.style.transform = `translateX(-${currentSlide * (100 / slideCount)}%)`;
                 
                 // Update indicator styling (dot di bagian bawah)
                 indicators.forEach((ind, index) => {
