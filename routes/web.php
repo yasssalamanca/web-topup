@@ -19,3 +19,6 @@ Route::get('/', function () {
 
 Route::get('/order/{game}', [\App\Http\Controllers\OrderController::class, 'show'])->name('order.show');
 Route::get('/joki/{game}', [\App\Http\Controllers\JokiController::class, 'show'])->name('joki.show');
+
+// Mock API Route for Nickname Checker
+Route::post('/api/check-nickname', [\App\Http\Controllers\ApiController::class, 'checkNickname']);

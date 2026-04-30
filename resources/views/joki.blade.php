@@ -119,9 +119,31 @@
                             <option value="Facebook">Facebook</option>
                         </select>
                     </div>
-                    <div>
-                        <label class="block text-sm font-semibold text-slate-300 mb-2">Nickname Akun <span class="text-red-500">*</span></label>
-                        <input type="text" name="nickname" required class="w-full bg-surface-light border border-white/10 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 transition-all" placeholder="Contoh: YassPro">
+                    <div class="col-span-1 md:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-300 mb-2">User ID <span class="text-red-500">*</span></label>
+                            <input type="text" id="target_id" name="target_id" required class="w-full bg-surface-light border border-white/10 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 transition-all" placeholder="Contoh: 12345678">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-300 mb-2">Zone ID <span class="text-red-500">*</span></label>
+                            <input type="text" id="target_zone" name="target_zone" required class="w-full bg-surface-light border border-white/10 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 transition-all" placeholder="Contoh: 1234">
+                        </div>
+                    </div>
+                    
+                    <!-- Hidden input to store resolved nickname -->
+                    <input type="hidden" name="nickname" id="resolved_nickname" value="">
+
+                    <!-- Nickname Result UI -->
+                    <div class="col-span-1 md:col-span-2">
+                        <div id="nickname-result" class="hidden bg-blue-500/10 border border-blue-500/20 rounded-xl p-3 flex items-center gap-3 transition-all">
+                            <div class="w-8 h-8 rounded-lg bg-blue-500/20 flex items-center justify-center text-blue-400" id="nickname-icon">
+                                <span class="material-symbols-outlined text-[18px]">person</span>
+                            </div>
+                            <div>
+                                <div class="text-[10px] text-blue-400 font-bold uppercase tracking-wider mb-0.5">Nickname in-game</div>
+                                <div class="text-sm font-bold text-white" id="nickname-text">Menunggu input...</div>
+                            </div>
+                        </div>
                     </div>
                     <div>
                         <label class="block text-sm font-semibold text-slate-300 mb-2">Email / Username <span class="text-red-500">*</span></label>
@@ -379,6 +401,10 @@
     let selectedPrice = 0;
     let selectedName = '';
     let selectedFee = 0;
+    let typingTimer;                
+    let doneTypingInterval = 800;
+    let currentNickname = '';
+    const gameSlug = "mobile-legends";
 
     const rankConfig = {
         'Master': { tiers: ['IV', 'III', 'II', 'I'], maxStar: 4 },
@@ -609,8 +635,10 @@
         const email = document.querySelector('input[name="email"]').value;
         const pass = document.querySelector('input[name="password"]').value;
         const loginVia = document.querySelector('select[name="login_via"]').value;
+        const targetId = document.getElementById('target_id').value;
+        const targetZone = document.getElementById('target_zone').value;
         
-        if (selectedPrice > 0 && paymentRadio && email && pass && loginVia) {
+        if (selectedPrice > 0 && paymentRadio && email && pass && loginVia && targetId && targetZone) {
             btnBuy.disabled = false;
             btnBuy.classList.remove('from-slate-600', 'to-slate-500', 'cursor-not-allowed');
             btnBuy.classList.add('from-blue-600', 'to-cyan-500', 'hover:scale-105', 'shadow-[0_0_20px_rgba(6,182,212,0.4)]');
@@ -626,11 +654,90 @@
     // Attach listener to inputs for live validation
     const inputs = document.querySelectorAll('input, select');
     inputs.forEach(el => {
-        if(!el.classList.contains('calc-input')) {
+        if(!el.classList.contains('calc-input') && el.id !== 'target_id' && el.id !== 'target_zone') {
             el.addEventListener('input', updateCheckout);
             el.addEventListener('change', updateCheckout);
         }
     });
+
+    // Listeners for nickname checking
+    const targetIdInput = document.getElementById('target_id');
+    const targetZoneInput = document.getElementById('target_zone');
+    const resolvedNicknameInput = document.getElementById('resolved_nickname');
+    
+    targetIdInput.addEventListener('input', () => {
+        updateCheckout();
+        clearTimeout(typingTimer);
+        typingTimer = setTimeout(checkNickname, doneTypingInterval);
+    });
+    
+    targetZoneInput.addEventListener('input', () => {
+        updateCheckout();
+        clearTimeout(typingTimer);
+        typingTimer = setTimeout(checkNickname, doneTypingInterval);
+    });
+
+    // Fungsi Cek Nickname Otomatis
+    async function checkNickname() {
+        const targetId = targetIdInput.value;
+        const targetZone = targetZoneInput.value;
+        const resultContainer = document.getElementById('nickname-result');
+        const textElement = document.getElementById('nickname-text');
+        const iconElement = document.getElementById('nickname-icon');
+
+        if (!targetId || !targetZone) {
+            resultContainer.classList.add('hidden');
+            currentNickname = '';
+            resolvedNicknameInput.value = '';
+            updateCheckout();
+            return;
+        }
+
+        resultContainer.classList.remove('hidden');
+        textElement.innerText = "Mencari Nickname...";
+        textElement.classList.replace('text-white', 'text-slate-400');
+        iconElement.innerHTML = `<div class="w-4 h-4 border-2 border-blue-500/50 border-t-blue-400 rounded-full animate-spin"></div>`;
+
+        try {
+            const response = await fetch('/api/check-nickname', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                    'X-CSRF-TOKEN': '{{ csrf_token() ?? "" }}'
+                },
+                body: JSON.stringify({
+                    game: gameSlug,
+                    target_id: targetId,
+                    target_zone: targetZone
+                })
+            });
+
+            const data = await response.json();
+
+            if (data.success) {
+                currentNickname = data.nickname;
+                resolvedNicknameInput.value = data.nickname;
+                textElement.innerText = data.nickname;
+                textElement.classList.replace('text-slate-400', 'text-white');
+                iconElement.innerHTML = `<span class="material-symbols-outlined text-[18px]">verified_user</span>`;
+            } else {
+                currentNickname = '';
+                resolvedNicknameInput.value = '';
+                textElement.innerText = "ID Tidak Ditemukan";
+                textElement.classList.replace('text-white', 'text-red-400');
+                textElement.classList.replace('text-slate-400', 'text-red-400');
+                iconElement.innerHTML = `<span class="material-symbols-outlined text-[18px] text-red-400">error</span>`;
+            }
+        } catch (error) {
+            currentNickname = '';
+            resolvedNicknameInput.value = '';
+            textElement.innerText = "Gagal memuat nickname";
+            textElement.classList.replace('text-white', 'text-slate-400');
+            iconElement.innerHTML = `<span class="material-symbols-outlined text-[18px]">cloud_off</span>`;
+        }
+        updateCheckout();
+    }
 
     function submitOrder() {
         alert('Pesanan Joki Berhasil!\nData Login aman tersimpan.\n' + selectedName + '\nTotal Tagihan: ' + formatRupiah(selectedPrice + selectedFee));

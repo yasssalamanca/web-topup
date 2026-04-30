@@ -125,6 +125,17 @@
                     <span class="material-symbols-outlined text-[14px]">info</span>
                     {{ $config['info_text'] }}
                 </p>
+
+                <!-- Nickname Result UI -->
+                <div id="nickname-result" class="hidden mt-4 bg-blue-500/10 border border-blue-500/20 rounded-xl p-3 flex items-center gap-3 transition-all">
+                    <div class="w-8 h-8 rounded-lg bg-blue-500/20 flex items-center justify-center text-blue-400" id="nickname-icon">
+                        <span class="material-symbols-outlined text-[18px]">person</span>
+                    </div>
+                    <div>
+                        <div class="text-[10px] text-blue-400 font-bold uppercase tracking-wider mb-0.5">Nickname in-game</div>
+                        <div class="text-sm font-bold text-white" id="nickname-text">Menunggu input...</div>
+                    </div>
+                </div>
             </section>
 
             <!-- Step 2: Select Nominal -->
@@ -244,9 +255,13 @@
     </div>
 </div>
 
-<script>
+    <script>
     let selectedPrice = 0;
     let selectedFee = 0;
+    let typingTimer;                
+    let doneTypingInterval = 800;
+    let currentNickname = '';
+    const gameSlug = "{{ $game }}";
 
     function formatRupiah(number) {
         return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(number);
@@ -300,11 +315,80 @@
         }
     }
 
-    // Add listeners to text inputs to trigger check
-    document.getElementById('target_id').addEventListener('input', updateCheckout);
+    // Listeners for checkout and nickname checking
+    const targetIdInput = document.getElementById('target_id');
+    const targetZoneInput = document.getElementById('target_zone');
+    
+    targetIdInput.addEventListener('input', () => {
+        updateCheckout();
+        clearTimeout(typingTimer);
+        typingTimer = setTimeout(checkNickname, doneTypingInterval);
+    });
+    
     @if($config['has_zone_id'])
-    document.getElementById('target_zone').addEventListener('input', updateCheckout);
+    targetZoneInput.addEventListener('input', () => {
+        updateCheckout();
+        clearTimeout(typingTimer);
+        typingTimer = setTimeout(checkNickname, doneTypingInterval);
+    });
     @endif
+
+    // Fungsi Cek Nickname Otomatis
+    async function checkNickname() {
+        const targetId = targetIdInput.value;
+        const targetZone = {{ $config['has_zone_id'] ? 'true' : 'false' }} ? targetZoneInput.value : '';
+        const resultContainer = document.getElementById('nickname-result');
+        const textElement = document.getElementById('nickname-text');
+        const iconElement = document.getElementById('nickname-icon');
+
+        if (!targetId || ({{ $config['has_zone_id'] ? 'true' : 'false' }} && !targetZone)) {
+            resultContainer.classList.add('hidden');
+            currentNickname = '';
+            return;
+        }
+
+        // Tampilkan loading
+        resultContainer.classList.remove('hidden');
+        textElement.innerText = "Mencari Nickname...";
+        textElement.classList.replace('text-white', 'text-slate-400');
+        iconElement.innerHTML = `<div class="w-4 h-4 border-2 border-blue-500/50 border-t-blue-400 rounded-full animate-spin"></div>`;
+
+        try {
+            const response = await fetch('/api/check-nickname', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                    'X-CSRF-TOKEN': '{{ csrf_token() ?? "" }}'
+                },
+                body: JSON.stringify({
+                    game: gameSlug,
+                    target_id: targetId,
+                    target_zone: targetZone
+                })
+            });
+
+            const data = await response.json();
+
+            if (data.success) {
+                currentNickname = data.nickname;
+                textElement.innerText = data.nickname;
+                textElement.classList.replace('text-slate-400', 'text-white');
+                iconElement.innerHTML = `<span class="material-symbols-outlined text-[18px]">verified_user</span>`;
+            } else {
+                currentNickname = '';
+                textElement.innerText = "ID Tidak Ditemukan";
+                textElement.classList.replace('text-white', 'text-red-400');
+                textElement.classList.replace('text-slate-400', 'text-red-400');
+                iconElement.innerHTML = `<span class="material-symbols-outlined text-[18px] text-red-400">error</span>`;
+            }
+        } catch (error) {
+            currentNickname = '';
+            textElement.innerText = "Gagal memuat nickname";
+            textElement.classList.replace('text-white', 'text-slate-400');
+            iconElement.innerHTML = `<span class="material-symbols-outlined text-[18px]">cloud_off</span>`;
+        }
+    }
 
     function submitOrder() {
         const form = document.getElementById('order-form');
