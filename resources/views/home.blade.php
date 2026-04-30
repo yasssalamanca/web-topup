@@ -208,10 +208,10 @@
                 <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">sports_esports</span>
                 Games
             </button>
-            <button class="flex-shrink-0 flex items-center gap-2 px-5 md:px-6 py-2.5 md:py-3.5 rounded-2xl glass-panel text-slate-300 font-semibold hover:text-white hover:bg-white/5 transform hover:-translate-y-1 transition-all">
+            <a href="/joki/mlbb" class="flex-shrink-0 flex items-center gap-2 px-5 md:px-6 py-2.5 md:py-3.5 rounded-2xl glass-panel text-slate-300 font-semibold hover:text-white hover:bg-white/5 transform hover:-translate-y-1 transition-all cursor-pointer">
                 <span class="material-symbols-outlined text-[20px]">military_tech</span>
                 Joki MLBB
-            </button>
+            </a>
             <button class="flex-shrink-0 flex items-center gap-2 px-5 md:px-6 py-2.5 md:py-3.5 rounded-2xl glass-panel text-slate-300 font-semibold hover:text-white hover:bg-white/5 transform hover:-translate-y-1 transition-all">
                 <span class="material-symbols-outlined text-[20px]">confirmation_number</span>
                 Voucher

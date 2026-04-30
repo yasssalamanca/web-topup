@@ -18,3 +18,4 @@ Route::get('/', function () {
 });
 
 Route::get('/order/{game}', [\App\Http\Controllers\OrderController::class, 'show'])->name('order.show');
+Route::get('/joki/{game}', [\App\Http\Controllers\JokiController::class, 'show'])->name('joki.show');
