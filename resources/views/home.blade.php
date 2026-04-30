@@ -266,7 +266,7 @@
             </a>
             
             <!-- Game Card 3 -->
-            <a class="glass-panel rounded-2xl p-4 md:p-5 flex flex-col items-center text-center gap-3 md:gap-4 relative overflow-hidden group transition-all duration-300 hover:-translate-y-2" href="#">
+            <a class="glass-panel rounded-2xl p-4 md:p-5 flex flex-col items-center text-center gap-3 md:gap-4 relative overflow-hidden group transition-all duration-300 hover:-translate-y-2" href="/order/pubg-mobile">
                 <div class="absolute top-0 right-0 bg-gradient-to-bl from-blue-500 to-cyan-500 text-white text-[9px] md:text-[10px] px-3 py-1 rounded-bl-xl font-bold z-10 uppercase tracking-wider shadow-lg">SALE</div>
                 <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/80 z-0"></div>
                 <div class="relative w-20 h-20 md:w-24 md:h-24 rounded-2xl overflow-hidden shadow-2xl border border-white/10 group-hover:border-blue-400/50 transition-colors z-10">

@@ -31,6 +31,16 @@ class OrderController extends Controller
                 'id_label' => 'Player ID',
                 'id_placeholder' => 'Contoh: 1234567890',
                 'info_text' => 'Untuk mengetahui Player ID Anda, silakan klik menu profile dibagian kiri atas pada menu utama game.'
+            ],
+            'pubg-mobile' => [
+                'name' => 'PUBG Mobile',
+                'publisher' => 'Tencent Games',
+                'banner' => 'assets/images/games/banners/pubg-banner.jpg', // User perlu menyiapkan gambar ini
+                'icon' => 'assets/images/games/icons/pubg.png',
+                'has_zone_id' => false,
+                'id_label' => 'Player ID',
+                'id_placeholder' => 'Contoh: 5123456789',
+                'info_text' => 'Untuk mengetahui Player ID Anda, silakan buka profil di dalam game.'
             ]
         ];
 
@@ -77,6 +87,17 @@ class OrderController extends Controller
                     ['id' => 15, 'name' => '355 Diamonds', 'price' => 50000, 'icon' => 'diamond', 'bonus' => '+50 Bonus'],
                     ['id' => 16, 'name' => '720 Diamonds', 'price' => 100000, 'icon' => 'diamond', 'bonus' => '+100 Bonus'],
                     ['id' => 17, 'name' => '1450 Diamonds', 'price' => 200000, 'icon' => 'diamond', 'bonus' => '+200 Bonus'],
+                ]
+            ];
+        } else if ($game === 'pubg-mobile') {
+            $products = [
+                'Unknown Cash' => [
+                    ['id' => 301, 'name' => '60 UC', 'price' => 14000, 'icon' => 'monetization_on', 'bonus' => ''],
+                    ['id' => 302, 'name' => '325 UC', 'price' => 70000, 'icon' => 'monetization_on', 'bonus' => '+25 Bonus'],
+                    ['id' => 303, 'name' => '660 UC', 'price' => 140000, 'icon' => 'monetization_on', 'bonus' => '+60 Bonus'],
+                    ['id' => 304, 'name' => '1800 UC', 'price' => 350000, 'icon' => 'monetization_on', 'bonus' => '+300 Bonus'],
+                    ['id' => 305, 'name' => '3850 UC', 'price' => 700000, 'icon' => 'monetization_on', 'bonus' => '+850 Bonus'],
+                    ['id' => 306, 'name' => '8100 UC', 'price' => 1400000, 'icon' => 'monetization_on', 'bonus' => '+2100 Bonus'],
                 ]
             ];
         }
