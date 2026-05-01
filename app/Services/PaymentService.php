@@ -34,6 +34,15 @@ class PaymentService
      */
     public function requestPayment(Transaction $transaction)
     {
+        // BYPASS: Jika API Key belum diset, gunakan mode simulasi (dummy)
+        if (empty($this->apiKey)) {
+            $dummyUrl = url("/dummy-payment/" . $transaction->reference_id);
+            $transaction->update([
+                'payment_url' => $dummyUrl
+            ]);
+            return ['checkout_url' => $dummyUrl];
+        }
+
         $signature = $this->generateSignature($transaction->reference_id, $transaction->total_amount);
 
         // Nembak API Tripay

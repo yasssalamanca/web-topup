@@ -22,3 +22,6 @@ Route::get('/joki/{game}', [\App\Http\Controllers\JokiController::class, 'show']
 
 // Mock API Route for Nickname Checker
 Route::post('/api/check-nickname', [\App\Http\Controllers\ApiController::class, 'checkNickname']);
+
+// Route Checkout
+Route::post('/checkout', [\App\Http\Controllers\TransactionController::class, 'store'])->name('checkout');

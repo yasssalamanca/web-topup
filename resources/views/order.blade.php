@@ -409,34 +409,44 @@
         setTimeout(() => modal.classList.remove('opacity-0'), 10);
 
         // Kirim ke Backend TransactionController
-        // Karena ini sistem asli, kita fetch POST ke /api/transaction atau sesuai route yg ada.
-        // Berhubung kita gak tau route pasti APInya, kita simulasi menggunakan struktur Controller yg terlihat sebelumnya
-        // Jika route belum dibuat, kita buat dummy fetch atau alert success.
-        
-        // Asumsikan endpoint POST /transactions (karena di Controller namanya TransactionController@store)
-        fetch('/api/transactions', {
+        fetch('/checkout', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json',
-                'X-CSRF-TOKEN': '{{ csrf_token() ?? "" }}' // if inside web middleware
+                'X-CSRF-TOKEN': '{{ csrf_token() ?? "" }}'
             },
-            body: JSON.stringify(data)
+            body: JSON.stringify({
+                ...data,
+                target_zone: document.getElementById('target_zone') ? document.getElementById('target_zone').value : null,
+                game: '{{ $game }}'
+            })
         })
         .then(response => {
-            // Karena kita tau DB mati, pasti akan error 500. 
-            // Untuk demo, kita tangkap errornya tapi tetap tampilkan sukses visual jika gagal (demi mockup UX)
-            if(!response.ok) throw new Error('Database connection failed (Simulasi sukses)');
+            if(!response.ok) throw new Error('Network response was not ok');
             return response.json();
         })
         .then(result => {
-            alert('Pesanan Berhasil Dibuat!\n(Ini adalah simulasi sukses dari Frontend)');
-            window.location.href = '/';
+            if(result.success) {
+                alert('Pesanan Berhasil Disimpan di Database!\nNomor Invoice: ' + result.data.reference_id);
+                // Redirect ke homepage sementara, karena halaman invoice belum dibuat (Step 2)
+                window.location.href = '/';
+            } else {
+                alert('Gagal: ' + result.message);
+                modal.classList.add('opacity-0');
+                setTimeout(() => {
+                    modal.classList.add('hidden');
+                    modal.classList.remove('flex');
+                }, 300);
+            }
         })
         .catch(error => {
-            // Fallback for demo since DB is down
-            alert('Transaksi Diterima! (Mode Demo)\nSistem akan mengarahkan ke halaman pembayaran.');
-            window.location.href = '/';
+            alert('Terjadi kesalahan saat memproses pesanan.');
+            modal.classList.add('opacity-0');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+            }, 300);
         });
     }
 </script>
