@@ -25,3 +25,9 @@ Route::post('/api/check-nickname', [\App\Http\Controllers\ApiController::class, 
 
 // Route Checkout
 Route::post('/checkout', [\App\Http\Controllers\TransactionController::class, 'store'])->name('checkout');
+
+// Route Invoice (Cek Resi)
+Route::get('/invoice/{reference}', [\App\Http\Controllers\TransactionController::class, 'showInvoice'])->name('invoice.show');
+
+// Mock API Route for Simulate Payment Success
+Route::post('/api/simulate-payment/{reference}', [\App\Http\Controllers\TransactionController::class, 'simulatePayment']);

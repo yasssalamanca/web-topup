@@ -428,9 +428,8 @@
         })
         .then(result => {
             if(result.success) {
-                alert('Pesanan Berhasil Disimpan di Database!\nNomor Invoice: ' + result.data.reference_id);
-                // Redirect ke homepage sementara, karena halaman invoice belum dibuat (Step 2)
-                window.location.href = '/';
+                // Redirect ke halaman invoice
+                window.location.href = '/invoice/' + result.data.reference_id;
             } else {
                 alert('Gagal: ' + result.message);
                 modal.classList.add('opacity-0');

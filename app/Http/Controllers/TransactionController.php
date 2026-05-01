@@ -49,4 +49,29 @@ class TransactionController extends Controller
             ], 500);
         }
     }
+
+    public function showInvoice($reference)
+    {
+        $transaction = \App\Models\Transaction::with(['product.category', 'paymentMethod'])
+            ->where('reference_id', $reference)
+            ->firstOrFail();
+
+        return view('invoice', compact('transaction'));
+    }
+
+    public function simulatePayment($reference)
+    {
+        $transaction = \App\Models\Transaction::where('reference_id', $reference)->first();
+
+        if (!$transaction) {
+            return response()->json(['success' => false, 'message' => 'Transaksi tidak ditemukan'], 404);
+        }
+
+        if ($transaction->status === 'pending') {
+            $transaction->update(['status' => 'success']);
+            return response()->json(['success' => true, 'message' => 'Pembayaran berhasil disimulasikan!']);
+        }
+
+        return response()->json(['success' => false, 'message' => 'Transaksi sudah dibayar atau dibatalkan'], 400);
+    }
 }
