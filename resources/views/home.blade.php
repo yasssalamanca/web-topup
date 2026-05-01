@@ -279,7 +279,7 @@
             </a>
 
             <!-- Game Card 4 -->
-            <a class="glass-panel rounded-2xl p-4 md:p-5 flex flex-col items-center text-center gap-3 md:gap-4 relative overflow-hidden group transition-all duration-300 hover:-translate-y-2" href="#">
+            <a class="glass-panel rounded-2xl p-4 md:p-5 flex flex-col items-center text-center gap-3 md:gap-4 relative overflow-hidden group transition-all duration-300 hover:-translate-y-2" href="/order/valorant">
                 <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/80 z-0"></div>
                 <div class="relative w-20 h-20 md:w-24 md:h-24 rounded-2xl overflow-hidden shadow-2xl border border-white/10 group-hover:border-blue-400/50 transition-colors z-10">
                     <img alt="Valorant" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="{{ asset('assets/images/games/icons/valorant.png') }}"/>
@@ -291,7 +291,7 @@
             </a>
 
             <!-- Game Card 5 -->
-            <a class="glass-panel rounded-2xl p-4 md:p-5 flex flex-col items-center text-center gap-3 md:gap-4 relative overflow-hidden group transition-all duration-300 hover:-translate-y-2 border-yellow-500/20 hover:border-yellow-400/50 shadow-[0_0_20px_rgba(234,179,8,0.05)]" href="#">
+            <a class="glass-panel rounded-2xl p-4 md:p-5 flex flex-col items-center text-center gap-3 md:gap-4 relative overflow-hidden group transition-all duration-300 hover:-translate-y-2 border-yellow-500/20 hover:border-yellow-400/50 shadow-[0_0_20px_rgba(234,179,8,0.05)]" href="/order/genshin-impact">
                 <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/80 z-0"></div>
                 <div class="relative w-20 h-20 md:w-24 md:h-24 rounded-2xl overflow-hidden shadow-2xl border border-yellow-500/40 group-hover:border-yellow-400 transition-colors z-10">
                     <img alt="Genshin Impact" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="{{ asset('assets/images/games/icons/genshin.png') }}"/>
@@ -303,7 +303,7 @@
             </a>
 
             <!-- Game Card 6 -->
-            <a class="glass-panel rounded-2xl p-4 md:p-5 flex flex-col items-center text-center gap-3 md:gap-4 relative overflow-hidden group transition-all duration-300 hover:-translate-y-2" href="#">
+            <a class="glass-panel rounded-2xl p-4 md:p-5 flex flex-col items-center text-center gap-3 md:gap-4 relative overflow-hidden group transition-all duration-300 hover:-translate-y-2" href="/order/honkai-star-rail">
                 <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/80 z-0"></div>
                 <div class="relative w-20 h-20 md:w-24 md:h-24 rounded-2xl overflow-hidden shadow-2xl border border-white/10 group-hover:border-blue-400/50 transition-colors z-10">
                     <img alt="Honkai Star Rail" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="{{ asset('assets/images/games/icons/hsr.png') }}"/>

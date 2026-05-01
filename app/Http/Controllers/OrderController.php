@@ -41,6 +41,40 @@ class OrderController extends Controller
                 'id_label' => 'Player ID',
                 'id_placeholder' => 'Contoh: 5123456789',
                 'info_text' => 'Untuk mengetahui Player ID Anda, silakan buka profil di dalam game.'
+            ],
+            'valorant' => [
+                'name' => 'Valorant',
+                'publisher' => 'Riot Games',
+                'banner' => 'assets/images/games/banners/valorant-banner.jpg', // User perlu menyiapkan gambar ini
+                'icon' => 'assets/images/games/icons/valorant.png',
+                'has_zone_id' => false,
+                'id_label' => 'Riot ID',
+                'id_placeholder' => 'Contoh: Yass#1234',
+                'info_text' => 'Untuk mengetahui Riot ID Anda, silakan cek di menu profil in-game atau client Riot.'
+            ],
+            'genshin-impact' => [
+                'name' => 'Genshin Impact',
+                'publisher' => 'HoYoverse',
+                'banner' => 'assets/images/games/banners/genshin-banner.jpg', // User perlu menyiapkan gambar ini
+                'icon' => 'assets/images/games/icons/genshin.png', // User perlu menyiapkan gambar ini
+                'has_zone_id' => true,
+                'id_label' => 'User ID (UID)',
+                'zone_label' => 'Server',
+                'id_placeholder' => 'Contoh: 812345678',
+                'zone_placeholder' => 'Contoh: Asia',
+                'info_text' => 'Untuk mengetahui UID, cek profil di kiri atas menu Paimon. Pastikan Server yang dipilih benar.'
+            ],
+            'honkai-star-rail' => [
+                'name' => 'Honkai: Star Rail',
+                'publisher' => 'HoYoverse',
+                'banner' => 'assets/images/games/banners/hsr-banner.jpg', // User perlu menyiapkan gambar ini
+                'icon' => 'assets/images/games/icons/hsr.png', // User perlu menyiapkan gambar ini
+                'has_zone_id' => true,
+                'id_label' => 'User ID (UID)',
+                'zone_label' => 'Server',
+                'id_placeholder' => 'Contoh: 812345678',
+                'zone_placeholder' => 'Contoh: Asia',
+                'info_text' => 'Untuk mengetahui UID, buka Phone menu in-game.'
             ]
         ];
 
@@ -98,6 +132,46 @@ class OrderController extends Controller
                     ['id' => 304, 'name' => '1800 UC', 'price' => 350000, 'icon' => 'monetization_on', 'bonus' => '+300 Bonus'],
                     ['id' => 305, 'name' => '3850 UC', 'price' => 700000, 'icon' => 'monetization_on', 'bonus' => '+850 Bonus'],
                     ['id' => 306, 'name' => '8100 UC', 'price' => 1400000, 'icon' => 'monetization_on', 'bonus' => '+2100 Bonus'],
+                ]
+            ];
+        } else if ($game === 'valorant') {
+            $products = [
+                'Valorant Points' => [
+                    ['id' => 401, 'name' => '125 VP', 'price' => 15000, 'icon' => 'local_fire_department', 'bonus' => ''],
+                    ['id' => 402, 'name' => '420 VP', 'price' => 50000, 'icon' => 'local_fire_department', 'bonus' => ''],
+                    ['id' => 403, 'name' => '700 VP', 'price' => 80000, 'icon' => 'local_fire_department', 'bonus' => ''],
+                    ['id' => 404, 'name' => '1375 VP', 'price' => 150000, 'icon' => 'local_fire_department', 'bonus' => ''],
+                    ['id' => 405, 'name' => '2400 VP', 'price' => 250000, 'icon' => 'local_fire_department', 'bonus' => ''],
+                    ['id' => 406, 'name' => '4000 VP', 'price' => 400000, 'icon' => 'local_fire_department', 'bonus' => ''],
+                    ['id' => 407, 'name' => '8150 VP', 'price' => 800000, 'icon' => 'local_fire_department', 'bonus' => ''],
+                ]
+            ];
+        } else if ($game === 'genshin-impact') {
+            $products = [
+                'Membership' => [
+                    ['id' => 501, 'name' => 'Blessing of the Welkin Moon', 'price' => 60000, 'icon' => 'dark_mode', 'bonus' => '30 Hari'],
+                ],
+                'Genesis Crystals' => [
+                    ['id' => 502, 'name' => '60 Genesis Crystals', 'price' => 12000, 'icon' => 'diamond', 'bonus' => ''],
+                    ['id' => 503, 'name' => '300 Genesis Crystals', 'price' => 60000, 'icon' => 'diamond', 'bonus' => '+30 Bonus'],
+                    ['id' => 504, 'name' => '980 Genesis Crystals', 'price' => 190000, 'icon' => 'diamond', 'bonus' => '+110 Bonus'],
+                    ['id' => 505, 'name' => '1980 Genesis Crystals', 'price' => 380000, 'icon' => 'diamond', 'bonus' => '+260 Bonus'],
+                    ['id' => 506, 'name' => '3280 Genesis Crystals', 'price' => 630000, 'icon' => 'diamond', 'bonus' => '+600 Bonus'],
+                    ['id' => 507, 'name' => '6480 Genesis Crystals', 'price' => 1250000, 'icon' => 'diamond', 'bonus' => '+1600 Bonus'],
+                ]
+            ];
+        } else if ($game === 'honkai-star-rail') {
+            $products = [
+                'Membership' => [
+                    ['id' => 601, 'name' => 'Express Supply Pass', 'price' => 60000, 'icon' => 'train', 'bonus' => '30 Hari'],
+                ],
+                'Oneiric Shards' => [
+                    ['id' => 602, 'name' => '60 Oneiric Shards', 'price' => 12000, 'icon' => 'diamond', 'bonus' => ''],
+                    ['id' => 603, 'name' => '300 Oneiric Shards', 'price' => 60000, 'icon' => 'diamond', 'bonus' => '+30 Bonus'],
+                    ['id' => 604, 'name' => '980 Oneiric Shards', 'price' => 190000, 'icon' => 'diamond', 'bonus' => '+110 Bonus'],
+                    ['id' => 605, 'name' => '1980 Oneiric Shards', 'price' => 380000, 'icon' => 'diamond', 'bonus' => '+260 Bonus'],
+                    ['id' => 606, 'name' => '3280 Oneiric Shards', 'price' => 630000, 'icon' => 'diamond', 'bonus' => '+600 Bonus'],
+                    ['id' => 607, 'name' => '6480 Oneiric Shards', 'price' => 1250000, 'icon' => 'diamond', 'bonus' => '+1600 Bonus'],
                 ]
             ];
         }
