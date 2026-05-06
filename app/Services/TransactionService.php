@@ -17,13 +17,16 @@ class TransactionService
         $this->paymentService = $paymentService;
     }
 
-    public function createTransaction($userId, $productId, $targetId, $targetZone, $paymentMethodId)
+    public function createTransaction($userId, $productId, $targetId, $targetZone, $paymentMethodId, $customAmount = null)
     {
         $product = Product::findOrFail($productId);
         
+        // Harga produk dasar, bisa dioverride oleh custom amount (khusus Joki)
+        $productPrice = $customAmount !== null ? $customAmount : $product->price;
+
         // Asumsi fee admin. Nanti bisa ambil dari database tabel payment_methods
         $fee = 1500; 
-        $totalAmount = $product->price + $fee;
+        $totalAmount = $productPrice + $fee;
 
         $referenceId = 'INV-' . date('Ymd') . '-' . strtoupper(Str::random(6));
 
@@ -36,7 +39,7 @@ class TransactionService
             'target_id' => $targetId,
             'target_zone' => $targetZone,
             'status' => 'pending',
-            'amount' => $product->price,
+            'amount' => $productPrice,
             'fee' => $fee,
             'total_amount' => $totalAmount,
         ]);

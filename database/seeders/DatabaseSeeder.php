@@ -33,6 +33,8 @@ class DatabaseSeeder extends Seeder
             ['id' => 101, 'category_id' => 1, 'name' => 'Weekly Diamond Pass', 'price' => 28000, 'provider_price' => 25000, 'sku' => 'ML-WDP'],
             ['id' => 102, 'category_id' => 1, 'name' => 'Twilight Pass', 'price' => 135000, 'provider_price' => 130000, 'sku' => 'ML-TWILIGHT'],
             ['id' => 103, 'category_id' => 1, 'name' => '86 Diamonds', 'price' => 20000, 'provider_price' => 19000, 'sku' => 'ML-86'],
+            // MLBB Joki (Category 1)
+            ['id' => 999, 'category_id' => 1, 'name' => 'Joki Rank MLBB Custom', 'price' => 0, 'provider_price' => 0, 'sku' => 'ML-JOKI-CUSTOM'],
             // FF (Category 2)
             ['id' => 201, 'category_id' => 2, 'name' => '140 Diamonds', 'price' => 20000, 'provider_price' => 18000, 'sku' => 'FF-140'],
             // PUBG (Category 3)

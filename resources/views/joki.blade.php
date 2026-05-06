@@ -740,8 +740,61 @@
     }
 
     function submitOrder() {
-        alert('Pesanan Joki Berhasil!\nData Login aman tersimpan.\n' + selectedName + '\nTotal Tagihan: ' + formatRupiah(selectedPrice + selectedFee));
-        window.location.href = '/';
+        if (!selectedPrice) {
+            alert('Mohon lengkapi kalkulasi paket joki!');
+            return;
+        }
+
+        const paymentMethodInput = document.querySelector('input[name="payment_method_id"]:checked');
+        if (!paymentMethodInput) {
+            alert('Mohon pilih metode pembayaran!');
+            return;
+        }
+
+        const targetId = document.getElementById('target_id').value;
+        const targetZone = document.getElementById('target_zone').value;
+
+        if (!targetId) {
+            alert('Mohon lengkapi User ID!');
+            return;
+        }
+
+        // Tampilkan visual loading (jika perlu)
+        const btn = document.getElementById('btn-buy');
+        if(btn) btn.innerHTML = `<span class="material-symbols-outlined animate-spin">sync</span> Memproses...`;
+
+        fetch('/checkout', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+                'X-CSRF-TOKEN': '{{ csrf_token() ?? "" }}'
+            },
+            body: JSON.stringify({
+                product_id: 999, // Joki Custom ID (berdasarkan Seeder)
+                amount: selectedPrice,
+                target_id: targetId,
+                target_zone: targetZone,
+                payment_method_id: paymentMethodInput.value,
+                game: 'mobile-legends'
+            })
+        })
+        .then(response => {
+            if(!response.ok) throw new Error('Network response was not ok');
+            return response.json();
+        })
+        .then(result => {
+            if(result.success) {
+                window.location.href = '/invoice/' + result.data.reference_id;
+            } else {
+                alert('Gagal: ' + result.message);
+                if(btn) btn.innerHTML = `<span class="material-symbols-outlined">shopping_cart_checkout</span> Beli Sekarang`;
+            }
+        })
+        .catch(error => {
+            alert('Terjadi kesalahan saat memproses pesanan Joki.');
+            if(btn) btn.innerHTML = `<span class="material-symbols-outlined">shopping_cart_checkout</span> Beli Sekarang`;
+        });
     }
 </script>
 

@@ -21,7 +21,8 @@ class TransactionController extends Controller
         $request->validate([
             'product_id' => 'required|exists:products,id',
             'target_id' => 'required',
-            'payment_method_id' => 'required|exists:payment_methods,id'
+            'payment_method_id' => 'required|exists:payment_methods,id',
+            'amount' => 'nullable|integer'
         ]);
 
         try {
@@ -31,7 +32,8 @@ class TransactionController extends Controller
                 $request->product_id,
                 $request->target_id,
                 $request->target_zone,
-                $request->payment_method_id
+                $request->payment_method_id,
+                $request->amount
             );
 
             // 3. Kasih jawaban ke Front-End
