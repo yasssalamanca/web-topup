@@ -71,10 +71,10 @@
             
             <!-- Desktop Nav -->
             <nav class="hidden md:flex items-center gap-8">
-                <a class="text-sm font-semibold tracking-wide text-blue-500 border-b-2 border-blue-500 pb-1" href="#">Topup</a>
-                <a class="text-sm font-semibold tracking-wide text-slate-400 hover:text-slate-200 transition-colors" href="#">Cek Transaksi</a>
-                <a class="text-sm font-semibold tracking-wide text-slate-400 hover:text-slate-200 transition-colors" href="#">Leaderboard</a>
-                <a class="text-sm font-semibold tracking-wide text-slate-400 hover:text-slate-200 transition-colors" href="#">Kalkulator</a>
+                <a class="text-sm font-semibold tracking-wide text-blue-500 border-b-2 border-blue-500 pb-1" href="/">Topup</a>
+                <a class="text-sm font-semibold tracking-wide text-slate-400 hover:text-slate-200 transition-colors" href="/cek-transaksi">Cek Transaksi</a>
+                <a class="text-sm font-semibold tracking-wide text-slate-400 hover:text-slate-200 transition-colors" href="/leaderboard">Leaderboard</a>
+                <a class="text-sm font-semibold tracking-wide text-slate-400 hover:text-slate-200 transition-colors" href="/kalkulator">Kalkulator</a>
             </nav>
         </div>
         
@@ -115,16 +115,16 @@
     </div>
     
     <div class="flex-grow overflow-y-auto py-6 px-5 flex flex-col gap-2">
-        <a class="text-lg font-semibold text-blue-400 bg-blue-500/10 px-4 py-3 rounded-xl flex items-center gap-3" href="#">
+        <a class="text-lg font-semibold text-blue-400 bg-blue-500/10 px-4 py-3 rounded-xl flex items-center gap-3" href="/">
             <span class="material-symbols-outlined">bolt</span> Topup
         </a>
-        <a class="text-lg font-semibold text-slate-300 hover:text-white hover:bg-white/5 px-4 py-3 rounded-xl transition-colors flex items-center gap-3" href="#">
+        <a class="text-lg font-semibold text-slate-300 hover:text-white hover:bg-white/5 px-4 py-3 rounded-xl transition-colors flex items-center gap-3" href="/cek-transaksi">
             <span class="material-symbols-outlined">receipt_long</span> Cek Transaksi
         </a>
-        <a class="text-lg font-semibold text-slate-300 hover:text-white hover:bg-white/5 px-4 py-3 rounded-xl transition-colors flex items-center gap-3" href="#">
+        <a class="text-lg font-semibold text-slate-300 hover:text-white hover:bg-white/5 px-4 py-3 rounded-xl transition-colors flex items-center gap-3" href="/leaderboard">
             <span class="material-symbols-outlined">leaderboard</span> Leaderboard
         </a>
-        <a class="text-lg font-semibold text-slate-300 hover:text-white hover:bg-white/5 px-4 py-3 rounded-xl transition-colors flex items-center gap-3" href="#">
+        <a class="text-lg font-semibold text-slate-300 hover:text-white hover:bg-white/5 px-4 py-3 rounded-xl transition-colors flex items-center gap-3" href="/kalkulator">
             <span class="material-symbols-outlined">calculate</span> Kalkulator
         </a>
     </div>
@@ -220,10 +220,10 @@
                 <span class="material-symbols-outlined text-[20px]">phone_iphone</span>
                 Pulsa & Data
             </a>
-            <button class="flex-shrink-0 flex items-center gap-2 px-5 md:px-6 py-2.5 md:py-3.5 rounded-2xl glass-panel text-slate-300 font-semibold hover:text-white hover:bg-white/5 transform hover:-translate-y-1 transition-all">
+            <a href="/katalog/entertainment" class="flex-shrink-0 flex items-center gap-2 px-5 md:px-6 py-2.5 md:py-3.5 rounded-2xl glass-panel text-slate-300 font-semibold hover:text-white hover:bg-white/5 transform hover:-translate-y-1 transition-all">
                 <span class="material-symbols-outlined text-[20px]">movie</span>
                 Entertainment
-            </button>
+            </a>
         </div>
     </section>
 

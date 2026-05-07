@@ -47,6 +47,20 @@ Route::get('/katalog/{type}', function ($type) {
                 ['name' => 'Spotify Premium', 'image' => 'spotify.png'],
                 ['name' => 'Netflix', 'image' => 'netflix.png']
             ]
+        ],
+        'entertainment' => [
+            'title' => 'Katalog Entertainment',
+            'icon' => 'movie',
+            'items' => [
+                ['name' => 'Netflix', 'image' => 'netflix.png'],
+                ['name' => 'Spotify', 'image' => 'spotify.png'],
+                ['name' => 'YouTube Premium', 'image' => 'youtube.png'],
+                ['name' => 'Disney+ Hotstar', 'image' => 'disney.png'],
+                ['name' => 'Vidio', 'image' => 'vidio.png'],
+                ['name' => 'WeTV', 'image' => 'wetv.png'],
+                ['name' => 'Iflix', 'image' => 'iflix.png'],
+                ['name' => 'Apple TV+', 'image' => 'appletv.png']
+            ]
         ]
     ];
 
@@ -68,3 +82,22 @@ Route::get('/invoice/{reference}', [\App\Http\Controllers\TransactionController:
 
 // Mock API Route for Simulate Payment Success
 Route::post('/api/simulate-payment/{reference}', [\App\Http\Controllers\TransactionController::class, 'simulatePayment']);
+
+// Cek Transaksi
+Route::get('/cek-transaksi', function () {
+    return view('cek-transaksi');
+})->name('cek.transaksi');
+
+// Leaderboard (Under Development)
+Route::get('/leaderboard', function () {
+    return view('coming-soon', [
+        'title' => 'Leaderboard',
+        'icon' => 'leaderboard',
+        'description' => 'Fitur Leaderboard sedang kami siapkan. Segera hadir untuk menampilkan Top Spender dan Buyer terbaik YASS Game Store!'
+    ]);
+})->name('leaderboard');
+
+// Kalkulator Topup
+Route::get('/kalkulator', function () {
+    return view('kalkulator');
+})->name('kalkulator');
