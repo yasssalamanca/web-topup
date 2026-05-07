@@ -212,14 +212,14 @@
                 <span class="material-symbols-outlined text-[20px]">military_tech</span>
                 Joki MLBB
             </a>
-            <button class="flex-shrink-0 flex items-center gap-2 px-5 md:px-6 py-2.5 md:py-3.5 rounded-2xl glass-panel text-slate-300 font-semibold hover:text-white hover:bg-white/5 transform hover:-translate-y-1 transition-all">
+            <a href="/order/google-play" class="flex-shrink-0 flex items-center gap-2 px-5 md:px-6 py-2.5 md:py-3.5 rounded-2xl glass-panel text-slate-300 font-semibold hover:text-white hover:bg-white/5 transform hover:-translate-y-1 transition-all">
                 <span class="material-symbols-outlined text-[20px]">confirmation_number</span>
                 Voucher
-            </button>
-            <button class="flex-shrink-0 flex items-center gap-2 px-5 md:px-6 py-2.5 md:py-3.5 rounded-2xl glass-panel text-slate-300 font-semibold hover:text-white hover:bg-white/5 transform hover:-translate-y-1 transition-all">
+            </a>
+            <a href="/order/pulsa-telkomsel" class="flex-shrink-0 flex items-center gap-2 px-5 md:px-6 py-2.5 md:py-3.5 rounded-2xl glass-panel text-slate-300 font-semibold hover:text-white hover:bg-white/5 transform hover:-translate-y-1 transition-all">
                 <span class="material-symbols-outlined text-[20px]">phone_iphone</span>
                 Pulsa & Data
-            </button>
+            </a>
             <button class="flex-shrink-0 flex items-center gap-2 px-5 md:px-6 py-2.5 md:py-3.5 rounded-2xl glass-panel text-slate-300 font-semibold hover:text-white hover:bg-white/5 transform hover:-translate-y-1 transition-all">
                 <span class="material-symbols-outlined text-[20px]">movie</span>
                 Entertainment

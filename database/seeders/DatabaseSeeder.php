@@ -21,6 +21,8 @@ class DatabaseSeeder extends Seeder
             ['id' => 4, 'name' => 'Valorant', 'slug' => 'valorant', 'image' => 'assets/images/games/icons/valorant.png'],
             ['id' => 5, 'name' => 'Genshin Impact', 'slug' => 'genshin-impact', 'image' => 'assets/images/games/icons/genshin.png'],
             ['id' => 6, 'name' => 'Honkai: Star Rail', 'slug' => 'honkai-star-rail', 'image' => 'assets/images/games/icons/hsr.png'],
+            ['id' => 7, 'name' => 'Google Play Voucher', 'slug' => 'google-play', 'image' => 'assets/images/games/icons/google-play.png'],
+            ['id' => 8, 'name' => 'Pulsa & Data Telkomsel', 'slug' => 'pulsa-telkomsel', 'image' => 'assets/images/games/icons/telkomsel.png'],
         ];
         
         foreach ($categories as $cat) {
@@ -45,6 +47,23 @@ class DatabaseSeeder extends Seeder
             ['id' => 501, 'category_id' => 5, 'name' => 'Blessing of the Welkin Moon', 'price' => 60000, 'provider_price' => 55000, 'sku' => 'GI-WELKIN'],
             // HSR (Category 6)
             ['id' => 601, 'category_id' => 6, 'name' => 'Express Supply Pass', 'price' => 60000, 'provider_price' => 55000, 'sku' => 'HSR-EXPRESS'],
+            // Google Play Voucher (Category 7)
+            ['id' => 701, 'category_id' => 7, 'name' => 'Voucher IDR 5.000', 'price' => 5500, 'provider_price' => 5000, 'sku' => 'GP-5'],
+            ['id' => 702, 'category_id' => 7, 'name' => 'Voucher IDR 10.000', 'price' => 11000, 'provider_price' => 10000, 'sku' => 'GP-10'],
+            ['id' => 703, 'category_id' => 7, 'name' => 'Voucher IDR 20.000', 'price' => 22000, 'provider_price' => 20000, 'sku' => 'GP-20'],
+            ['id' => 704, 'category_id' => 7, 'name' => 'Voucher IDR 50.000', 'price' => 55000, 'provider_price' => 50000, 'sku' => 'GP-50'],
+            ['id' => 705, 'category_id' => 7, 'name' => 'Voucher IDR 100.000', 'price' => 110000, 'provider_price' => 100000, 'sku' => 'GP-100'],
+            ['id' => 706, 'category_id' => 7, 'name' => 'Voucher IDR 300.000', 'price' => 330000, 'provider_price' => 300000, 'sku' => 'GP-300'],
+            ['id' => 707, 'category_id' => 7, 'name' => 'Voucher IDR 500.000', 'price' => 550000, 'provider_price' => 500000, 'sku' => 'GP-500'],
+            // Pulsa & Data Telkomsel (Category 8)
+            ['id' => 801, 'category_id' => 8, 'name' => 'Pulsa 5.000', 'price' => 5500, 'provider_price' => 5000, 'sku' => 'TSEL-5'],
+            ['id' => 802, 'category_id' => 8, 'name' => 'Pulsa 10.000', 'price' => 10500, 'provider_price' => 10000, 'sku' => 'TSEL-10'],
+            ['id' => 803, 'category_id' => 8, 'name' => 'Pulsa 20.000', 'price' => 20000, 'provider_price' => 19500, 'sku' => 'TSEL-20'],
+            ['id' => 804, 'category_id' => 8, 'name' => 'Pulsa 50.000', 'price' => 49500, 'provider_price' => 49000, 'sku' => 'TSEL-50'],
+            ['id' => 805, 'category_id' => 8, 'name' => 'Pulsa 100.000', 'price' => 99000, 'provider_price' => 98000, 'sku' => 'TSEL-100'],
+            ['id' => 806, 'category_id' => 8, 'name' => 'Telkomsel Flash 1GB 7 Hari', 'price' => 15000, 'provider_price' => 14000, 'sku' => 'TSEL-DATA-1'],
+            ['id' => 807, 'category_id' => 8, 'name' => 'Telkomsel Flash 3GB 30 Hari', 'price' => 32000, 'provider_price' => 30000, 'sku' => 'TSEL-DATA-3'],
+            ['id' => 808, 'category_id' => 8, 'name' => 'Telkomsel Flash 10GB 30 Hari', 'price' => 85000, 'provider_price' => 80000, 'sku' => 'TSEL-DATA-10'],
         ];
 
         foreach ($products as $prod) {

@@ -67,14 +67,34 @@ class OrderController extends Controller
             'honkai-star-rail' => [
                 'name' => 'Honkai: Star Rail',
                 'publisher' => 'HoYoverse',
-                'banner' => 'assets/images/games/banners/hsr-banner.jpg', // User perlu menyiapkan gambar ini
-                'icon' => 'assets/images/games/icons/hsr.png', // User perlu menyiapkan gambar ini
+                'banner' => 'assets/images/games/banners/hsr-banner.jpg',
+                'icon' => 'assets/images/games/icons/hsr.png',
                 'has_zone_id' => true,
                 'id_label' => 'User ID (UID)',
                 'zone_label' => 'Server',
                 'id_placeholder' => 'Contoh: 812345678',
                 'zone_placeholder' => 'Contoh: Asia',
                 'info_text' => 'Untuk mengetahui UID, buka Phone menu in-game.'
+            ],
+            'google-play' => [
+                'name' => 'Google Play Voucher',
+                'publisher' => 'Google',
+                'banner' => 'assets/images/games/banners/google-play-banner.jpg',
+                'icon' => 'assets/images/games/icons/google-play.png',
+                'has_zone_id' => false,
+                'id_label' => 'No. HP / Email',
+                'id_placeholder' => '0812xxxx / email@gmail.com',
+                'info_text' => 'Kode Voucher akan dikirimkan ke Nomor HP / Email yang Anda masukkan.'
+            ],
+            'pulsa-telkomsel' => [
+                'name' => 'Pulsa & Data Telkomsel',
+                'publisher' => 'Telkomsel',
+                'banner' => 'assets/images/games/banners/telkomsel-banner.jpg',
+                'icon' => 'assets/images/games/icons/telkomsel.png',
+                'has_zone_id' => false,
+                'id_label' => 'Nomor Telkomsel',
+                'id_placeholder' => 'Contoh: 081234567890',
+                'info_text' => 'Pastikan nomor telkomsel yang Anda masukkan sudah benar dan masih aktif.'
             ]
         ];
 
@@ -172,6 +192,33 @@ class OrderController extends Controller
                     ['id' => 605, 'name' => '1980 Oneiric Shards', 'price' => 380000, 'icon' => 'diamond', 'bonus' => '+260 Bonus'],
                     ['id' => 606, 'name' => '3280 Oneiric Shards', 'price' => 630000, 'icon' => 'diamond', 'bonus' => '+600 Bonus'],
                     ['id' => 607, 'name' => '6480 Oneiric Shards', 'price' => 1250000, 'icon' => 'diamond', 'bonus' => '+1600 Bonus'],
+                ]
+            ];
+        } else if ($game === 'google-play') {
+            $products = [
+                'Voucher Code' => [
+                    ['id' => 701, 'name' => 'Voucher IDR 5.000', 'price' => 5500, 'icon' => 'confirmation_number', 'bonus' => 'Instan'],
+                    ['id' => 702, 'name' => 'Voucher IDR 10.000', 'price' => 11000, 'icon' => 'confirmation_number', 'bonus' => 'Instan'],
+                    ['id' => 703, 'name' => 'Voucher IDR 20.000', 'price' => 22000, 'icon' => 'confirmation_number', 'bonus' => 'Instan'],
+                    ['id' => 704, 'name' => 'Voucher IDR 50.000', 'price' => 55000, 'icon' => 'confirmation_number', 'bonus' => 'Instan'],
+                    ['id' => 705, 'name' => 'Voucher IDR 100.000', 'price' => 110000, 'icon' => 'confirmation_number', 'bonus' => 'Instan'],
+                    ['id' => 706, 'name' => 'Voucher IDR 300.000', 'price' => 330000, 'icon' => 'confirmation_number', 'bonus' => 'Instan'],
+                    ['id' => 707, 'name' => 'Voucher IDR 500.000', 'price' => 550000, 'icon' => 'confirmation_number', 'bonus' => 'Instan'],
+                ]
+            ];
+        } else if ($game === 'pulsa-telkomsel') {
+            $products = [
+                'Pulsa Reguler' => [
+                    ['id' => 801, 'name' => 'Pulsa 5.000', 'price' => 5500, 'icon' => 'phone_iphone', 'bonus' => 'Menambah Masa Aktif'],
+                    ['id' => 802, 'name' => 'Pulsa 10.000', 'price' => 10500, 'icon' => 'phone_iphone', 'bonus' => 'Menambah Masa Aktif'],
+                    ['id' => 803, 'name' => 'Pulsa 20.000', 'price' => 20000, 'icon' => 'phone_iphone', 'bonus' => 'Menambah Masa Aktif'],
+                    ['id' => 804, 'name' => 'Pulsa 50.000', 'price' => 49500, 'icon' => 'phone_iphone', 'bonus' => 'Menambah Masa Aktif'],
+                    ['id' => 805, 'name' => 'Pulsa 100.000', 'price' => 99000, 'icon' => 'phone_iphone', 'bonus' => 'Menambah Masa Aktif'],
+                ],
+                'Paket Data' => [
+                    ['id' => 806, 'name' => 'Telkomsel Flash 1GB 7 Hari', 'price' => 15000, 'icon' => 'wifi', 'bonus' => 'Full Kuota Utama'],
+                    ['id' => 807, 'name' => 'Telkomsel Flash 3GB 30 Hari', 'price' => 32000, 'icon' => 'wifi', 'bonus' => 'Full Kuota Utama'],
+                    ['id' => 808, 'name' => 'Telkomsel Flash 10GB 30 Hari', 'price' => 85000, 'icon' => 'wifi', 'bonus' => 'Termasuk Kuota Malam'],
                 ]
             ];
         }
