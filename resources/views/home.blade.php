@@ -85,13 +85,13 @@
             </button>
             <div class="hidden md:flex items-center bg-surface rounded-full px-4 py-2 border border-white/10 focus-within:border-primary/50 focus-within:ring-1 focus-within:ring-primary/50 transition-all">
                 <span class="material-symbols-outlined text-slate-400 mr-2 text-lg">search</span>
-                <input class="bg-transparent border-none text-sm text-slate-200 placeholder-slate-500 focus:ring-0 focus:outline-none w-32 lg:w-48" placeholder="Cari game..." type="text"/>
+                <input id="search-input" class="bg-transparent border-none text-sm text-slate-200 placeholder-slate-500 focus:ring-0 focus:outline-none w-32 lg:w-48" placeholder="Cari game..." type="text" autocomplete="off"/>
             </div>
 
             <!-- Login / Reg -->
             <div class="hidden sm:flex items-center gap-3 border-l border-white/10 pl-5">
-                <button class="text-sm font-semibold text-slate-300 hover:text-white transition-colors">Masuk</button>
-                <button class="text-sm font-semibold text-white bg-gradient-to-r from-blue-600 to-primary hover:from-blue-500 hover:to-blue-400 px-5 py-2 rounded-full shadow-[0_0_15px_rgba(0,116,217,0.3)] transition-all transform hover:scale-105 active:scale-95">Daftar</button>
+                <a href="/login" class="text-sm font-semibold text-slate-300 hover:text-white transition-colors">Masuk</a>
+                <a href="/register" class="text-sm font-semibold text-white bg-gradient-to-r from-blue-600 to-primary hover:from-blue-500 hover:to-blue-400 px-5 py-2 rounded-full shadow-[0_0_15px_rgba(0,116,217,0.3)] transition-all transform hover:scale-105 active:scale-95">Daftar</a>
             </div>
 
             <!-- Hamburger Button -->
@@ -130,8 +130,8 @@
     </div>
 
     <div class="p-5 border-t border-white/10 flex flex-col gap-3">
-        <button class="w-full text-base font-semibold text-slate-200 bg-white/5 hover:bg-white/10 px-5 py-3 rounded-xl transition-colors border border-white/10">Masuk</button>
-        <button class="w-full text-base font-semibold text-white bg-gradient-to-r from-blue-600 to-primary hover:opacity-90 px-5 py-3 rounded-xl shadow-[0_0_20px_rgba(0,116,217,0.3)] transition-all">Daftar Akun Baru</button>
+        <a href="/login" class="w-full text-base font-semibold text-slate-200 bg-white/5 hover:bg-white/10 px-5 py-3 rounded-xl transition-colors border border-white/10 text-center">Masuk</a>
+        <a href="/register" class="w-full text-base font-semibold text-white bg-gradient-to-r from-blue-600 to-primary hover:opacity-90 px-5 py-3 rounded-xl shadow-[0_0_20px_rgba(0,116,217,0.3)] transition-all text-center">Daftar Akun Baru</a>
     </div>
 </div>
 
@@ -149,9 +149,9 @@
                         <span class="text-[10px] md:text-xs font-bold text-yellow-400 mb-2 md:mb-4 inline-block w-max px-3 py-1 bg-yellow-500/20 rounded-full border border-yellow-500/30 backdrop-blur-md uppercase tracking-wider">SUPER PROMO</span>
                         <h1 class="font-display text-2xl sm:text-4xl md:text-6xl font-extrabold text-white mb-2 md:mb-4 leading-[1.1] text-glow">SUPER Yass <br/><span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">Mega Sale</span></h1>
                         <p class="text-xs sm:text-sm md:text-lg text-slate-300 mb-4 md:mb-8 max-w-sm md:max-w-md line-clamp-2 md:line-clamp-none">Dapatkan diskon hingga 50% untuk semua topup game favoritmu minggu ini. Stock sangat terbatas!</p>
-                        <button class="w-fit text-xs md:text-base font-semibold text-white bg-gradient-to-r from-blue-600 to-cyan-500 px-6 md:px-8 py-2.5 md:py-3.5 rounded-full shadow-[0_0_20px_rgba(6,182,212,0.4)] hover:scale-105 transition-transform flex items-center gap-2">
+                        <a href="/order/mobile-legends" class="w-fit text-xs md:text-base font-semibold text-white bg-gradient-to-r from-blue-600 to-cyan-500 px-6 md:px-8 py-2.5 md:py-3.5 rounded-full shadow-[0_0_20px_rgba(6,182,212,0.4)] hover:scale-105 transition-transform flex items-center gap-2">
                             Topup Sekarang <span class="material-symbols-outlined text-sm md:text-base">arrow_forward</span>
-                        </button>
+                        </a>
                     </div>
                 </div>
 
@@ -163,9 +163,9 @@
                         <span class="text-[10px] md:text-xs font-bold text-purple-400 mb-2 md:mb-4 inline-block w-max px-3 py-1 bg-purple-500/20 rounded-full border border-purple-500/30 backdrop-blur-md uppercase tracking-wider">NEW BANNER</span>
                         <h1 class="font-display text-2xl sm:text-4xl md:text-6xl font-extrabold text-white mb-2 md:mb-4 leading-[1.1] text-glow">Honkai: <br/><span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">Star Rail</span></h1>
                         <p class="text-xs sm:text-sm md:text-lg text-slate-300 mb-4 md:mb-8 max-w-sm md:max-w-md line-clamp-2 md:line-clamp-none">Top up Oneiric Shard sekarang dan dapatkan bonus Double Reward khusus user baru!</p>
-                        <button class="w-fit text-xs md:text-base font-semibold text-white bg-gradient-to-r from-purple-500 to-pink-500 px-6 md:px-8 py-2.5 md:py-3.5 rounded-full shadow-[0_0_20px_rgba(168,85,247,0.4)] hover:scale-105 transition-transform flex items-center gap-2">
+                        <a href="/order/honkai-star-rail" class="w-fit text-xs md:text-base font-semibold text-white bg-gradient-to-r from-purple-500 to-pink-500 px-6 md:px-8 py-2.5 md:py-3.5 rounded-full shadow-[0_0_20px_rgba(168,85,247,0.4)] hover:scale-105 transition-transform flex items-center gap-2">
                             Topup HSR <span class="material-symbols-outlined text-sm md:text-base">arrow_forward</span>
-                        </button>
+                        </a>
                     </div>
                 </div>
 
@@ -177,9 +177,9 @@
                         <span class="text-[10px] md:text-xs font-bold text-orange-400 mb-2 md:mb-4 inline-block w-max px-3 py-1 bg-orange-500/20 rounded-full border border-orange-500/30 backdrop-blur-md uppercase tracking-wider">FLASH DEALS</span>
                         <h1 class="font-display text-2xl sm:text-4xl md:text-6xl font-extrabold text-white mb-2 md:mb-4 leading-[1.1] text-glow">Mobile Legends <br/><span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-500">Diamond Pass</span></h1>
                         <p class="text-xs sm:text-sm md:text-lg text-slate-300 mb-4 md:mb-8 max-w-sm md:max-w-md line-clamp-2 md:line-clamp-none">Harga super miring untuk Weekly Diamond Pass! Klaim sekarang sebelum kehabisan.</p>
-                        <button class="w-fit text-xs md:text-base font-semibold text-white bg-gradient-to-r from-orange-500 to-red-600 px-6 md:px-8 py-2.5 md:py-3.5 rounded-full shadow-[0_0_20px_rgba(249,115,22,0.4)] hover:scale-105 transition-transform flex items-center gap-2">
+                        <a href="/order/mobile-legends" class="w-fit text-xs md:text-base font-semibold text-white bg-gradient-to-r from-orange-500 to-red-600 px-6 md:px-8 py-2.5 md:py-3.5 rounded-full shadow-[0_0_20px_rgba(249,115,22,0.4)] hover:scale-105 transition-transform flex items-center gap-2">
                             Beli Sekarang <span class="material-symbols-outlined text-sm md:text-base">arrow_forward</span>
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -236,12 +236,12 @@
                 </div>
                 <h2 class="font-display text-xl md:text-3xl font-bold text-white tracking-tight">Sedang Tren</h2>
             </div>
-            <a href="#" class="text-sm font-semibold text-blue-400 hover:text-blue-300 flex items-center gap-1">Lihat Semua <span class="material-symbols-outlined text-[16px]">arrow_forward</span></a>
+            <a href="/games" class="text-sm font-semibold text-blue-400 hover:text-blue-300 flex items-center gap-1">Lihat Semua <span class="material-symbols-outlined text-[16px]">arrow_forward</span></a>
         </div>
         
         <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 md:gap-6">
             <!-- Game Card 1 -->
-            <a class="glass-panel rounded-2xl p-4 md:p-5 flex flex-col items-center text-center gap-3 md:gap-4 relative overflow-hidden group transition-all duration-300 hover:-translate-y-2" href="/order/mobile-legends">
+            <a class="game-card glass-panel rounded-2xl p-4 md:p-5 flex flex-col items-center text-center gap-3 md:gap-4 relative overflow-hidden group transition-all duration-300 hover:-translate-y-2" href="/order/mobile-legends" data-name="mobile legends" data-publisher="moonton">
                 <div class="absolute top-0 right-0 bg-gradient-to-bl from-orange-500 to-red-500 text-white text-[9px] md:text-[10px] px-3 py-1 rounded-bl-xl font-bold z-10 uppercase tracking-wider shadow-lg">HOT</div>
                 <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/80 z-0"></div>
                 <div class="relative w-20 h-20 md:w-24 md:h-24 rounded-2xl overflow-hidden shadow-2xl border border-white/10 group-hover:border-blue-400/50 transition-colors z-10">
@@ -254,7 +254,7 @@
             </a>
             
             <!-- Game Card 2 -->
-            <a class="glass-panel rounded-2xl p-4 md:p-5 flex flex-col items-center text-center gap-3 md:gap-4 relative overflow-hidden group transition-all duration-300 hover:-translate-y-2" href="/order/free-fire">
+            <a class="game-card glass-panel rounded-2xl p-4 md:p-5 flex flex-col items-center text-center gap-3 md:gap-4 relative overflow-hidden group transition-all duration-300 hover:-translate-y-2" href="/order/free-fire" data-name="free fire" data-publisher="garena">
                 <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/80 z-0"></div>
                 <div class="relative w-20 h-20 md:w-24 md:h-24 rounded-2xl overflow-hidden shadow-2xl border border-white/10 group-hover:border-blue-400/50 transition-colors z-10">
                     <img alt="Free Fire" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="{{ asset('assets/images/games/icons/free-fire.png') }}"/>
@@ -266,7 +266,7 @@
             </a>
             
             <!-- Game Card 3 -->
-            <a class="glass-panel rounded-2xl p-4 md:p-5 flex flex-col items-center text-center gap-3 md:gap-4 relative overflow-hidden group transition-all duration-300 hover:-translate-y-2" href="/order/pubg-mobile">
+            <a class="game-card glass-panel rounded-2xl p-4 md:p-5 flex flex-col items-center text-center gap-3 md:gap-4 relative overflow-hidden group transition-all duration-300 hover:-translate-y-2" href="/order/pubg-mobile" data-name="pubg mobile" data-publisher="level infinite">
                 <div class="absolute top-0 right-0 bg-gradient-to-bl from-blue-500 to-cyan-500 text-white text-[9px] md:text-[10px] px-3 py-1 rounded-bl-xl font-bold z-10 uppercase tracking-wider shadow-lg">SALE</div>
                 <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/80 z-0"></div>
                 <div class="relative w-20 h-20 md:w-24 md:h-24 rounded-2xl overflow-hidden shadow-2xl border border-white/10 group-hover:border-blue-400/50 transition-colors z-10">
@@ -279,7 +279,7 @@
             </a>
 
             <!-- Game Card 4 -->
-            <a class="glass-panel rounded-2xl p-4 md:p-5 flex flex-col items-center text-center gap-3 md:gap-4 relative overflow-hidden group transition-all duration-300 hover:-translate-y-2" href="/order/valorant">
+            <a class="game-card glass-panel rounded-2xl p-4 md:p-5 flex flex-col items-center text-center gap-3 md:gap-4 relative overflow-hidden group transition-all duration-300 hover:-translate-y-2" href="/order/valorant" data-name="valorant" data-publisher="riot games">
                 <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/80 z-0"></div>
                 <div class="relative w-20 h-20 md:w-24 md:h-24 rounded-2xl overflow-hidden shadow-2xl border border-white/10 group-hover:border-blue-400/50 transition-colors z-10">
                     <img alt="Valorant" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="{{ asset('assets/images/games/icons/valorant.png') }}"/>
@@ -291,7 +291,7 @@
             </a>
 
             <!-- Game Card 5 -->
-            <a class="glass-panel rounded-2xl p-4 md:p-5 flex flex-col items-center text-center gap-3 md:gap-4 relative overflow-hidden group transition-all duration-300 hover:-translate-y-2 border-yellow-500/20 hover:border-yellow-400/50 shadow-[0_0_20px_rgba(234,179,8,0.05)]" href="/order/genshin-impact">
+            <a class="game-card glass-panel rounded-2xl p-4 md:p-5 flex flex-col items-center text-center gap-3 md:gap-4 relative overflow-hidden group transition-all duration-300 hover:-translate-y-2 border-yellow-500/20 hover:border-yellow-400/50 shadow-[0_0_20px_rgba(234,179,8,0.05)]" href="/order/genshin-impact" data-name="genshin impact" data-publisher="hoyoverse">
                 <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/80 z-0"></div>
                 <div class="relative w-20 h-20 md:w-24 md:h-24 rounded-2xl overflow-hidden shadow-2xl border border-yellow-500/40 group-hover:border-yellow-400 transition-colors z-10">
                     <img alt="Genshin Impact" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="{{ asset('assets/images/games/icons/genshin.png') }}"/>
@@ -303,7 +303,7 @@
             </a>
 
             <!-- Game Card 6 -->
-            <a class="glass-panel rounded-2xl p-4 md:p-5 flex flex-col items-center text-center gap-3 md:gap-4 relative overflow-hidden group transition-all duration-300 hover:-translate-y-2" href="/order/honkai-star-rail">
+            <a class="game-card glass-panel rounded-2xl p-4 md:p-5 flex flex-col items-center text-center gap-3 md:gap-4 relative overflow-hidden group transition-all duration-300 hover:-translate-y-2" href="/order/honkai-star-rail" data-name="honkai star rail" data-publisher="hoyoverse">
                 <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/80 z-0"></div>
                 <div class="relative w-20 h-20 md:w-24 md:h-24 rounded-2xl overflow-hidden shadow-2xl border border-white/10 group-hover:border-blue-400/50 transition-colors z-10">
                     <img alt="Honkai Star Rail" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="{{ asset('assets/images/games/icons/hsr.png') }}"/>
@@ -329,7 +329,7 @@
                     <span class="inline-block px-3 py-1 bg-blue-500/20 rounded-md border border-blue-400/30 text-blue-400 text-[10px] md:text-xs font-bold mb-3 md:mb-4 uppercase tracking-widest backdrop-blur-md">WEEKEND DEAL</span>
                     <h3 class="font-display text-2xl md:text-4xl font-bold text-white mb-2 md:mb-3">Bonus Diamond 20%</h3>
                     <p class="text-sm md:text-base text-slate-300 mb-4 md:mb-6">Topup minimal 500 Diamonds dan dapatkan bonus 20% langsung ke akun kamu. Event terbatas untuk merayakan Season baru!</p>
-                    <button class="w-fit font-semibold text-white bg-white/10 hover:bg-white hover:text-black border border-white/20 px-6 py-2.5 md:py-3 rounded-xl transition-all duration-300 backdrop-blur-sm">Lihat Detail Promo</button>
+                    <a href="/order/mobile-legends" class="w-fit inline-block font-semibold text-white bg-white/10 hover:bg-white hover:text-black border border-white/20 px-6 py-2.5 md:py-3 rounded-xl transition-all duration-300 backdrop-blur-sm">Lihat Detail Promo</a>
                 </div>
             </div>
             
@@ -344,7 +344,7 @@
                 <div class="relative z-10 mt-8 md:mt-auto">
                     <h3 class="font-display text-xl md:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-200 to-yellow-500 mb-2 md:mb-3">YASS Prestige</h3>
                     <p class="text-sm text-slate-300 mb-6">Daftar jadi VIP dan nikmati harga khusus reseller (diskon hingga 15%) setiap harinya tanpa syarat.</p>
-                    <button class="w-full font-bold text-black bg-gradient-to-r from-amber-400 to-yellow-500 hover:from-amber-300 hover:to-yellow-400 px-4 py-3 md:py-3.5 rounded-xl shadow-[0_0_20px_rgba(245,158,11,0.3)] hover:scale-[1.02] transition-all">Daftar Sekarang</button>
+                    <a href="/prestige" class="w-full inline-block text-center font-bold text-black bg-gradient-to-r from-amber-400 to-yellow-500 hover:from-amber-300 hover:to-yellow-400 px-4 py-3 md:py-3.5 rounded-xl shadow-[0_0_20px_rgba(245,158,11,0.3)] hover:scale-[1.02] transition-all">Daftar Sekarang</a>
                 </div>
                 <div class="absolute -bottom-16 -right-16 w-48 h-48 bg-amber-500/10 rounded-full blur-3xl group-hover:bg-amber-500/20 transition-all duration-700"></div>
             </div>
@@ -364,10 +364,10 @@
             </a>
             <p class="text-sm text-slate-400 mb-6 leading-relaxed">YASS Game Store adalah platform topup game termurah, tercepat, dan terpercaya di Indonesia. Otomatis 24/7 tanpa ribet.</p>
             <div class="flex items-center gap-4">
-                <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-blue-500/20 hover:text-blue-400 text-slate-400 transition-colors">
+                <a href="https://instagram.com/ilyasarifinputraa" target="_blank" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-blue-500/20 hover:text-blue-400 text-slate-400 transition-colors">
                     <span class="material-symbols-outlined text-[20px]">photo_camera</span>
                 </a>
-                <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-green-500/20 hover:text-green-400 text-slate-400 transition-colors">
+                <a href="https://wa.me/6289665433636" target="_blank" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-green-500/20 hover:text-green-400 text-slate-400 transition-colors">
                     <span class="material-symbols-outlined text-[20px]">chat</span>
                 </a>
             </div>
@@ -376,20 +376,20 @@
         <div>
             <h4 class="font-bold text-white mb-6 uppercase tracking-wider text-sm">Peta Situs</h4>
             <ul class="space-y-4">
-                <li><a class="text-sm text-blue-400 font-medium hover:text-blue-300 transition-colors flex items-center gap-2" href="#"><span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span> Beranda</a></li>
-                <li><a class="text-sm text-slate-400 hover:text-white transition-colors" href="#">Hubungi Kami</a></li>
-                <li><a class="text-sm text-slate-400 hover:text-white transition-colors" href="#">Syarat & Ketentuan</a></li>
-                <li><a class="text-sm text-slate-400 hover:text-white transition-colors" href="#">Kebijakan Privasi</a></li>
+                <li><a class="text-sm text-blue-400 font-medium hover:text-blue-300 transition-colors flex items-center gap-2" href="/"><span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span> Beranda</a></li>
+                <li><a class="text-sm text-slate-400 hover:text-white transition-colors" href="/contact">Hubungi Kami</a></li>
+                <li><a class="text-sm text-slate-400 hover:text-white transition-colors" href="/terms">Syarat & Ketentuan</a></li>
+                <li><a class="text-sm text-slate-400 hover:text-white transition-colors" href="/privacy">Kebijakan Privasi</a></li>
             </ul>
         </div>
         
         <div>
             <h4 class="font-bold text-white mb-6 uppercase tracking-wider text-sm">Produk</h4>
             <ul class="space-y-4">
-                <li><a class="text-sm text-slate-400 hover:text-white transition-colors" href="#">Mobile Legends</a></li>
-                <li><a class="text-sm text-slate-400 hover:text-white transition-colors" href="#">Free Fire</a></li>
-                <li><a class="text-sm text-slate-400 hover:text-white transition-colors" href="#">PUBG Mobile</a></li>
-                <li><a class="text-sm text-slate-400 hover:text-white transition-colors" href="#">Genshin Impact</a></li>
+                <li><a class="text-sm text-slate-400 hover:text-white transition-colors" href="/order/mobile-legends">Mobile Legends</a></li>
+                <li><a class="text-sm text-slate-400 hover:text-white transition-colors" href="/order/free-fire">Free Fire</a></li>
+                <li><a class="text-sm text-slate-400 hover:text-white transition-colors" href="/order/pubg-mobile">PUBG Mobile</a></li>
+                <li><a class="text-sm text-slate-400 hover:text-white transition-colors" href="/order/genshin-impact">Genshin Impact</a></li>
             </ul>
         </div>
         
@@ -424,6 +424,43 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
+        // --- Search Logic ---
+        const searchInput = document.getElementById('search-input');
+        if (searchInput) {
+            const cards = document.querySelectorAll('.game-card');
+            const gamesSection = document.querySelector('.game-card')?.closest('.grid');
+
+            searchInput.addEventListener('input', function () {
+                const q = this.value.trim().toLowerCase();
+                let anyVisible = false;
+
+                cards.forEach(card => {
+                    const name = card.dataset.name || '';
+                    const pub = card.dataset.publisher || '';
+                    const match = !q || name.includes(q) || pub.includes(q);
+                    card.style.display = match ? '' : 'none';
+                    if (match) anyVisible = true;
+                });
+
+                // Redirect to /games if typing in search (after 600ms debounce)
+                if (q.length >= 2) {
+                    clearTimeout(searchInput._timer);
+                    searchInput._timer = setTimeout(() => {
+                        window.location.href = `/games?q=${encodeURIComponent(q)}`;
+                    }, 600);
+                } else {
+                    clearTimeout(searchInput._timer);
+                    cards.forEach(card => { card.style.display = ''; });
+                }
+            });
+
+            // Handle Enter key → go to /games
+            searchInput.addEventListener('keydown', function (e) {
+                if (e.key === 'Enter' && this.value.trim()) {
+                    window.location.href = `/games?q=${encodeURIComponent(this.value.trim())}`;
+                }
+            });
+        }
         // --- Mobile Menu Logic ---
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const closeMenuBtn = document.getElementById('close-menu-btn');
